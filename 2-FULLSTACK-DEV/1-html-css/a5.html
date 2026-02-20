@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .logo{
+            width: 24px;
+        }
+        #navbar{
+            display: flex;
+            flex-direction: row;
+        }
+        input[type="email"]{
+            border: 2px solid gray;
+            border-radius: 5px;
+        }
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+        a:hover {
+            color: red;
+        }
+        a:visited {
+            color: darkblue;
+        }
+
+        #subscribe>p::before{
+            content: "\"";
+        }
+        #subscribe>p::after{
+            content: "\"";
+        }
+
+    </style>
+</head>
+<body>
+   <h1>Assignment 5: CSS Selectors & Specificity </h1>
+
+   <header>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="" class="logo">
+        <nav>
+            <ul id="navbar">
+                <li><a href="https://github.com" target="_blank">Home</a></li>
+                <li><a href="https://facebook.com"  target="_blank">Articles</a></li>
+                <li><a href="https://linkedin.com"  target="_blank">About</a></li>
+            </ul>
+        </nav>
+   </header>
+
+   <section>
+    <h2>This is you Home</h2>
+    <div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse vel eius quasi deserunt soluta a quod nisi cupiditate quos autem.</p>
+    </div>
+    </section>
+
+
+    <section>
+        <h2>Latest Articles</h2>
+        <article>
+            <div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="" width="50px">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, non quis! Repellendus molestiae enim nam unde tempore non pariatur inventore expedita impedit facere id itaque corrupti, nihil fugiat eius vitae!</p>
+            </div>
+        </article>
+
+        <article>
+            <div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="" width="50px">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, non quis! Repellendus molestiae enim nam unde tempore non pariatur inventore expedita impedit facere id itaque corrupti, nihil fugiat eius vitae!</p>
+            </div>
+        </article>
+
+        <article>
+            <div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="" width="50px">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, non quis! Repellendus molestiae enim nam unde tempore non pariatur inventore expedita impedit facere id itaque corrupti, nihil fugiat eius vitae!</p>
+            </div>
+        </article>
+    </section>
+
+    <section id="subscribe">
+        <p>Subscribe to our Newsletter</p>
+        <form action="">
+            <input type="email" placeholder="arjitsharma@gmail.com">
+        </form>
+    </section>
+    
+
+</body>
+</html>

@@ -1,181 +1,72 @@
-# AWS Assignments
+# AWS Mastery Assignments
 
-## Assignment-1: Deploy a Containerized Microservice Using ECS Fargate  
-_🎯 Goal: Package a small service in Docker and deploy it to ECS Fargate with auto-scaling._  
+prioritize core developer-relevant topics: serverless, containers, storage, databases, networking/security basics, observability, CI/CD, and IaC 
+Focus on hands-on building, explaining trade-offs (cost/performance/scalability/security), and verbal walkthroughs (as in interviews). Use free tier where possible.
 
-**Scenario:** A product team wants to migrate a monolithic service to microservices.  
-**AWS Focus:** ECS, Fargate, CloudWatch, IAM, ECR  
-**Skills Built:** Container orchestration, CI/CD integration.  
+### Level 1 – Core Compute & Storage (1–5)
 
----
+1. **Deploy a Serverless REST API with API Gateway + Lambda + DynamoDB**  
+   Build a CRUD API (e.g., todo list) → integrate DynamoDB → add IAM role for least privilege → handle errors/retries.  
+   **Focus:** Serverless architecture, event-driven design, NoSQL modeling.
 
-## Assignment-2: Create a CI/CD Pipeline with CodePipeline + CodeBuild  
-_🎯 Goal: Build a pipeline triggered by Git pushes that builds, tests, and deploys a Lambda or ECS service._  
+2. **Build & Deploy a Containerized Service on ECS Fargate**  
+   Dockerize a simple Node.js/Go/Spring service → push to ECR → deploy to Fargate with auto-scaling group and ALB.  
+   **Focus:** Container basics, ECS vs EKS decision, logging to CloudWatch.
 
-**Scenario:** Engineering leadership wants consistent deployments.  
-**AWS Focus:** CodePipeline, CodeBuild, CodeDeploy  
-**Skills Built:** DevOps automation.  
+3. **Implement S3 Static Website + CloudFront CDN + Route 53**  
+   Host a static React/Vue site on S3 → add CloudFront distribution → configure custom domain + HTTPS via ACM.  
+   **Focus:** Object storage, global distribution, caching behaviors, signed URLs.
 
----
+4. **Secure File Uploads with S3 Presigned URLs**  
+   Generate presigned PUT URLs from a backend (Lambda or EC2) → allow direct browser-to-S3 uploads → enforce policies (e.g., content-type, expiration).  
+   **Focus:** Direct-to-cloud patterns, security without proxying large files.
 
-## Assignment-3: Implement API Gateway + Lambda for a Serverless API  
-_🎯 Goal: Create a CRUD API backed by DynamoDB and secured via IAM roles or Cognito._  
+5. **Add Caching Layer with ElastiCache (Redis/Memcached)**  
+   Integrate Redis cache in front of DynamoDB/RDS → implement cache-aside pattern with TTL → handle cache invalidation.  
+   **Focus:** Performance optimization, read-heavy workloads, fallback logic.
 
-**Scenario:** You are tasked to build a cost-efficient API for lightweight operations.  
-**AWS Focus:** API Gateway, Lambda, DynamoDB  
-**Skills Built:** Serverless design, event-driven logic.  
+### Level 2 – Databases & Messaging (6–9)
 
----
+6. **Model & Scale a DynamoDB Table with GSIs & On-Demand**  
+   Design table for high-read access (e.g., user profiles + orders) → add Global Secondary Indexes → enable TTL + on-demand capacity.  
+   **Focus:** Partition key/sort key design, hot key mitigation, cost modeling.
 
-## Assignment-4: Enable Observability Using CloudWatch Structured Logs + Metrics  
-_🎯 Goal: Add structured JSON logging, custom CloudWatch metrics, and alarms._  
+7. **Provision RDS (Aurora/MySQL/PostgreSQL) with Secrets Manager**  
+   Deploy Aurora Serverless v2 → store credentials in Secrets Manager → rotate automatically → connect from Lambda/ECS.  
+   **Focus:** Relational DB in cloud, connection pooling, secure secrets handling.
 
-**Scenario:** Logs are currently unstructured and difficult to query.  
-**AWS Focus:** CloudWatch Logs, Metrics, Alarms  
-**Skills Built:** Production monitoring.  
+8. **Decouple Services with SQS + SNS (Fan-out Pattern)**  
+   Publish order events via SNS → multiple SQS queues subscribe (e.g., email, inventory, analytics) → process with Lambda.  
+   **Focus:** Asynchronous decoupling, dead-letter queues, visibility timeout.
 
----
+9. **Orchestrate Multi-Step Workflow with Step Functions**  
+   Build state machine: validate input → call Lambda → wait for approval → update DynamoDB → send notification. Add retries/parallel branches.  
+   **Focus:** Workflow coordination, error handling, visual debugging.
 
-## Assignment-5: Build an S3 Static Website with CloudFront and Route 53  
-_🎯 Goal: Configure static hosting, use CloudFront CDN, and add domain + SSL via ACM._  
+### Level 3 – Networking, Security & Observability (10–12)
 
-**Scenario:** Marketing needs a global landing page with caching and HTTPS.  
-**AWS Focus:** S3, CloudFront, Route 53, ACM  
-**Skills Built:** Web hosting, networking, SSL.  
+10. **Design Secure VPC with Private/Public Subnets**  
+    Create VPC → public subnet with NAT Gateway → private subnet for ECS/Lambda → security groups + NACLs → expose via ALB/API Gateway.  
+    **Focus:** Networking fundamentals, private resources, least-privilege access.
 
----
+11. **Implement Fine-Grained IAM & AssumeRole Patterns**  
+    Create IAM roles for Lambda/ECS → use STS AssumeRole for cross-account/temp creds → apply condition keys (e.g., source IP, MFA).  
+    **Focus:** Security best practices, least privilege, temporary credentials.
 
-## Assignment-6: Implement DynamoDB with On-Demand Scaling and GSI  
-_🎯 Goal: Create a table with partition keys, GSIs, and TTL for cleanup._  
+12. **Set Up Observability with CloudWatch Logs/Metrics + Alarms + X-Ray**  
+    Enable structured JSON logging → create custom metrics → set alarms → add X-Ray tracing to Lambda/API Gateway.  
+    **Focus:** Production monitoring, distributed tracing, alerting.
 
-**Scenario:** The product team needs a low-latency NoSQL store for reads that scale separately from writes.  
-**AWS Focus:** DynamoDB  
-**Skills Built:** NoSQL data modeling.  
+### Level 4 – Deployment & IaC (13–15)
 
----
+13. **Build CI/CD Pipeline with CodePipeline + CodeBuild + CodeDeploy**  
+    Trigger on Git push → build/test Docker image → deploy to ECS or Lambda → add manual approval stage.  
+    **Focus:** Automated deployments, blue/green strategy basics.
 
-## Assignment-7: Add Step Functions to Orchestrate Multi-Step Workflows  
-_🎯 Goal: Implement a state machine coordinating Lambda services with retries and parallel steps._  
+14. **Provision Infrastructure with AWS CDK (or Terraform)**  
+    Use CDK (preferred for developers) to define VPC, Lambda, DynamoDB, IAM → synthesize/deploy → show diff on changes.  
+    **Focus:** Infrastructure as Code, reproducibility, version control of infra.
 
-**Scenario:** Business processes span several async operations.  
-**AWS Focus:** Step Functions  
-**Skills Built:** Workflow orchestration.  
-
----
-
-## Assignment-8: Deploy Infrastructure with Terraform (or CDK)  
-_🎯 Goal: Provision VPC, IAM, S3, and Lambda using Infrastructure as Code._  
-
-**Scenario:** Ops requires infra-as-code standardization.  
-**AWS Focus:** Terraform OR AWS CDK  
-**Skills Built:** IaC, automation, reproducibility.  
-
----
-
-## Assignment-9: Build an Event-Driven Integration with SQS + SNS  
-_🎯 Goal: Use SNS to publish messages and multiple SQS queues for subscribers._  
-
-**Scenario:** A retail service needs asynchronous communication between components.  
-**AWS Focus:** SQS, SNS  
-**Skills Built:** Decoupling, queuing patterns.  
-
----
-
-## Assignment-10: Create an RDS Aurora Serverless DB + Connection Pooling  
-_🎯 Goal: Deploy Aurora Serverless with Secrets Manager rotation and Lambda-based access._  
-
-**Scenario:** Demand fluctuates and DB cost must scale accordingly.  
-**AWS Focus:** Aurora, Secrets Manager  
-**Skills Built:** Database scaling and secure access.  
-
----
-
-## Assignment-11: Configure Access Control with Fine-Grained IAM Roles  
-_🎯 Goal: Introduce least-privilege IAM roles and temporary credentials using IAM Roles + STS._  
-
-**Scenario:** Dev team permissions are too broad.  
-**AWS Focus:** IAM, STS  
-**Skills Built:** Security and compliance.  
-
----
-
-## Assignment-12: Build a Kinesis Firehose Data Ingestion Pipeline  
-_🎯 Goal: Capture streaming events and persist to S3/DynamoDB._  
-
-**Scenario:** Product analytics needs real-time streaming data.  
-**AWS Focus:** Kinesis Firehose  
-**Skills Built:** Scalable streaming ingestion.  
-
----
-
-## Assignment-13: Configure VPC Networking with Private/Public Subnets  
-_🎯 Goal: Build VPC, NAT gateway, SG rules, and deploy workload in private subnet._  
-
-**Scenario:** A system must run privately but expose an entry API endpoint.  
-**AWS Focus:** VPC, Subnets, SGs, NAT, IGW  
-**Skills Built:** Cloud networking.  
-
----
-
-## Assignment-14: Enable Caching with ElastiCache Redis  
-_🎯 Goal: Add Redis caching layer with expiration and fallback logic._  
-
-**Scenario:** API latency is high due to database round trips.  
-**AWS Focus:** ElastiCache  
-**Skills Built:** Caching strategies, performance tuning.  
-
----
-
-## Assignment-15: Configure Cost Monitoring with Budgets + Cost Explorer  
-_🎯 Goal: Create budgets, alerts, and cost dashboards tied to tags._  
-
-**Scenario:** Finance detected unexpected cloud spend.  
-**AWS Focus:** AWS Budgets, Cost Explorer  
-**Skills Built:** Cloud FinOps.  
-
----
-
-## Assignment-16: Deploy a Blue/Green Deployment Strategy  
-_🎯 Goal: Implement CodeDeploy blue/green deployment for ECS or EC2._  
-
-**Scenario:** Releases occasionally break production.  
-**AWS Focus:** CodeDeploy  
-**Skills Built:** Deployment reliability.  
-
----
-
-## Assignment-17: Implement S3 Lifecycle Policies + Glacier Archival  
-_🎯 Goal: Configure automatic tiering to IA → Glacier → Delete._  
-
-**Scenario:** Old logs must be retained but stored cheaply.  
-**AWS Focus:** S3, Glacier  
-**Skills Built:** Data lifecycle management.  
-
----
-
-## Assignment-18: Configure CloudTrail + GuardDuty for Security Monitoring  
-_🎯 Goal: Enable GuardDuty + CloudTrail and set security alerts._  
-
-**Scenario:** Security team needs standard auditing and anomaly detection.  
-**AWS Focus:** GuardDuty, CloudTrail  
-**Skills Built:** Security compliance.  
-
----
-
-## Assignment-19: Automate AMI Image Creation for EC2  
-_🎯 Goal: Create AMI automation job using SSM Automation documents._  
-
-**Scenario:** System needs weekly patching snapshots for rollback.  
-**AWS Focus:** EC2 AMI, SSM Automation  
-**Skills Built:** Operational automation.  
-
----
-
-## Assignment-20: Migrate a Local Image Upload System to S3 Presigned URLs  
-_🎯 Goal: Implement presigned upload URLs and secure them via IAM policies._  
-
-**Scenario:** Web apps currently upload files via backend; performance is slow.  
-**AWS Focus:** S3, IAM, SDK  
-**Skills Built:** Secure direct-to-cloud integration.  
-
----
+15. **Implement Blue/Green or Canary Deployment**  
+    Use CodeDeploy or ECS blue/green → demonstrate rollback → explain traffic shifting and validation hooks.  
+    **Focus:** Safe releases, zero-downtime, deployment patterns.

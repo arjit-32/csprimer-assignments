@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    .outer{
+       padding: 20px;
+        margin: 20px;
+        width: 150px;
+        border: 3px solid black;
+        background-color: lightblue;
+    }
+
+    .inner{
+        background-color: lightgreen;
+        display: inline;
+    }
+
+
+    /*  Widths */
+    .fixed-width{
+        width: 300px;
+        border: 2px solid red;
+        background-color: lightyellow;
+    }
+    .responsive-width{
+        max-width: 300px;
+        border: 2px solid red;
+        background-color: lightyellow;
+    }
+
+    /* Display types */
+    .block{
+        background-color: red;
+    }
+    .inline{
+        background-color: aquamarine;
+    }
+    .inline-block{
+        padding: 50px;
+        display: inline-block;
+        background-color: blueviolet;
+    }
+
+    </style>
+</head>
+<body>
+   <h1>Assignment 6: Box Model & Display </h1>
+   <h2>Box Model</h2> 
+   <div class="outer">
+            <div class="inner">
+                Hello World
+            </div>
+                <div class="inner">
+                by Arjit
+            </div>
+    </div>
+ 
+
+    <h2>Fixed and Responsive</h2>
+    <div class="fixed-width">
+        fixed width
+    </div>
+    <div class="responsive-width">
+        Responsive width
+    </div>
+
+    <h2>Display Types</h2>
+    <div>
+        <div class="block">Block Element</div>
+        <br>
+        <span class="inline">Inline Element</span>
+        <span class="inline">Inline Element</span>
+        <br>
+        <div class="inline-block">Inline Block</div>
+        <div class="inline-block">Inline Block</div>
+    </div>
+</body>
+</html>
