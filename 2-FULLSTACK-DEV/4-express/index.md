@@ -1,372 +1,249 @@
-# Express Fundamentals
+# Express.js SDE Curriculum
 
-## Assignment-1: First Express Server  
-_🎯 Goal: Get familiar with Express setup._
 
-**Tasks** ->  
-1. Initialize project with `npm init -y`.  
-2. Install `express`.  
-3. Create:  
-   - `GET /` → returns `"Hello Express"`.  
-   - `GET /time` → returns server time.  
+# 🟢 PHASE 1 — Express Fundamentals
 
 ---
 
-## Assignment-2: Routes & Route Parameters  
-_🎯 Goal: Learn routing patterns._
+## Assignment 1: Clean Express Setup
+🎯 Proper project foundation.
 
-**Tasks** ->  
-1. Add routes:  
+Tasks:
+1. Initialize project.
+2. Setup:
+   - Express
+   - dotenv
+3. Create:
+   - GET /health
+   - GET /
+4. Add basic logger middleware.
 
-| Path              | Behavior                     |  
-|-------------------|------------------------------|  
-| `/hello/:name`    | Returns greeting with name.  |  
-| `/math/add/:a/:b` | Returns sum.                |  
-
-2. Validate that `a` and `b` are numbers.  
-
----
-
-## Assignment-3: Express Middleware Basics  
-_🎯 Goal: Understand middleware pipeline._
-
-**Tasks** ->  
-1. Add a custom logger middleware printing:  
-   - method  
-   - url  
-   - timestamp  
-2. Add a request counter stored in memory.  
+Goal:
+Understand request lifecycle.
 
 ---
 
-## Assignment-4: Serving Static Files  
-_🎯 Goal: Serve a simple frontend from Express._
+## Assignment 2: REST API (In-Memory)
+🎯 Build structured CRUD API.
 
-**Tasks** ->  
-1. Create a `public/` folder.  
-2. Serve:  
-   - `index.html`.  
-   - CSS + images.  
-3. Add route `/about.html`.  
-
----
-
-## Assignment-5: Basic Error Handling  
-_🎯 Goal: Learn Express error patterns._
-
-**Tasks** ->  
-1. Create a route `/error` that throws an error.  
-2. Add error middleware that returns JSON:  
-   ```json
-   { "error": "message" }
-Add 404 fallback for unknown routes.
-
----
-# Building APIs
-
-## Assignment-1: CRUD API (In-Memory)  
-_🎯 Goal: Build structured REST APIs._
-
-**Tasks** ->  
-1. Build `/api/todos`.  
-2. Endpoints:  
-   - POST → create.  
-   - GET → list.  
-   - GET `/id`.  
-   - PUT `/id`.  
-   - DELETE `/id`.  
+Tasks:
+1. Build `/api/todos`
+2. Endpoints:
+   - POST
+   - GET
+   - GET /:id
+   - PUT /:id
+   - DELETE /:id
+3. Return proper status codes.
+4. Handle invalid IDs gracefully.
 
 ---
 
-## Assignment-2: Query Filtering & Pagination  
-_🎯 Goal: Make APIs dynamic._
+## Assignment 3: Middleware & Error Handling
+🎯 Production-style error management.
 
-**Tasks** ->  
-1. Support filters such as:  
-   `/api/todos?completed=true`.  
-2. Add:  
-   - Pagination: `page`, `limit`.  
-   - Sorting: `sort=createdAt:desc`.  
-
----
-
-## Assignment-3: Request Validation  
-_🎯 Goal: Secure and sanitize inputs._
-
-**Tasks** ->  
-1. Integrate **Zod or Joi**.  
-2. Validate:  
-   - Body schema.  
-   - Query params.  
-   - Route params.  
-3. Ensure consistent JSON errors.  
+Tasks:
+1. Create:
+   - logger middleware
+   - request ID middleware
+2. Create centralized error handler.
+3. Return structured error:
+   {
+     success: false,
+     message,
+     code
+   }
+4. Add 404 fallback.
 
 ---
 
-## Assignment-4: Authentication (JWT)  
-_🎯 Goal: Require login to access protected routes._
-
-**Tasks** ->  
-1. Create `/auth/register` & `/auth/login`.  
-2. Use:  
-   - bcrypt hashing.  
-   - Signed JWT.  
-3. Protect `/api/todos` so only logged-in users see their own items.  
+# 🟡 PHASE 2 — Validation & Authentication
 
 ---
 
-## Assignment-5: Role-Based Authorization  
-_🎯 Goal: Implement permissions._
+## Assignment 4: Request Validation (Zod/Joi)
+🎯 Input safety.
 
-**Tasks** ->  
-1. Add roles: `"user"`, `"admin"`.  
-2. Only admin can:  
-   - Delete any todo.  
-   - Access `/admin/stats`.  
-
----
-
-# Express Architecture
-
-## Assignment-1: Modular Project Structure  
-_🎯 Goal: Refactor monolith code._
-
-**Tasks** ->  
-1. Create folder structure:  
-/src ├─ models/ ├─ controllers/ ├─ routes/ ├─ middleware/ ├─ utils/ └─ app.js
-
-2. Move logic into modules.  
+Tasks:
+1. Validate:
+   - body
+   - query
+   - params
+2. Return consistent validation errors.
+3. Prevent invalid payloads from reaching controllers.
 
 ---
 
-## Assignment-2: File Uploads (Multer)  
-_🎯 Goal: Support media uploads._
+## Assignment 5: JWT Authentication
+🎯 Secure APIs.
 
-**Tasks** ->  
-1. Create `/upload/avatar`.  
-2. Validate:  
-   - File size limit.  
-   - Allowed types.  
-3. Store file with a unique name.  
-4. Return file URL.  
-
----
-
-## Assignment-3: Express + Database Integration  
-_🎯 Goal: Persist data._
-
-**Tasks** ->  
-1. Choose MongoDB (Mongoose) OR PostgreSQL (Prisma).  
-2. Move todos storage from memory → DB.  
-3. Implement:  
-   - Indexing.  
-   - Schema validation.  
-   - Soft delete (bonus).  
+Tasks:
+1. Create:
+   - /auth/register
+   - /auth/login
+2. Hash passwords (bcrypt).
+3. Issue signed JWT.
+4. Create auth middleware.
+5. Protect `/api/todos`.
 
 ---
 
-## Assignment-4: Global Error Handling + Logging System  
-_🎯 Goal: Build production-ready error layers._
+## Assignment 6: Role-Based Authorization
+🎯 Permission control.
 
-**Tasks** ->  
-1. Create custom `AppError` class.  
-2. Log based on environment.  
-3. Mask internal errors in production.  
-4. Add request ID tracking.  
-
----
-
-## Assignment-5: Performance Optimization  
-_🎯 Goal: Identify bottlenecks and optimize._
-
-**Tasks** ->  
-1. Measure response times.  
-2. Add:  
-   - Request caching (Redis optional).  
-   - Compression middleware.  
-   - Rate limiting improvements.  
+Tasks:
+1. Add roles:
+   - user
+   - admin
+2. Only admin can delete any todo.
+3. Implement role-check middleware.
 
 ---
 
-
-
-# Scaling and Production Engineering
-
-## Assignment-1: WebSockets + Express  
-_🎯 Goal: Add real-time messaging._
-
-**Tasks** ->  
-1. Integrate with Socket.io or WebSocket API.  
-2. Notify users when:  
-   - A new todo is created.  
-   - A todo is updated.  
+# 🟠 PHASE 3 — Database Integration
 
 ---
 
-## Assignment-2: Express with Cluster Mode Scaling  
-_🎯 Goal: Multi-core scaling._
+## Assignment 7: Connect Database
+🎯 Persist data properly.
 
-**Tasks** ->  
-1. Run server across CPU cores.  
-2. Add health check.  
-3. Gracefully restart workers.  
-
----
-
-## Assignment-3: API Rate Limiting (Distributed)  
-_🎯 Goal: Rate limit across multiple processes._
-
-**Tasks** ->  
-1. Implement Redis or in-memory cluster messaging.  
-2. Per-user + per-IP throttling tiers.  
+Tasks:
+1. Use:
+   - PostgreSQL (Prisma) OR
+   - MongoDB (Mongoose)
+2. Move todos to DB.
+3. Add:
+   - Indexes
+   - Unique constraints
+4. Implement pagination + filtering.
 
 ---
 
-## Assignment-4: OpenAPI Documentation  
-_🎯 Goal: Make API self-documenting._
+## Assignment 8: Transactions & Data Integrity
+🎯 Maintain consistency.
 
-**Tasks** ->  
-1. Add Swagger UI.  
-2. Auto-generate documentation from schemas (Zod or Joi).  
-
----
-
-## Assignment-5: Deploy a Production-Ready Express App  
-_🎯 Goal: CI/CD + deployment._
-
-**Tasks** ->  
-1. Dockerize app.  
-2. Add:  
-   - Environment variable injection.  
-   - HTTPS reverse proxy (NGINX).  
-3. Deploy to:  
-   - Railway / Fly.io / AWS / Render.  
+Tasks:
+1. Create operation involving:
+   - multiple DB writes
+2. Use transaction.
+3. Rollback on failure.
+4. Test failure scenarios.
 
 ---
 
-
-
-# Advance Express Engineering 
-Systems-Level Production Patterns
-
-## Assignment-1: Multi-Tenant Express App  
-_🎯 Goal: Build a SaaS-style system with isolated tenant data._
-
-**Tasks** ->  
-1. Support URL-based tenant routing (`/tenantA/...`, `/tenantB/...`).  
-2. Load tenant config dynamically.  
-3. Implement per-tenant rate limits.  
-4. Prevent cross-tenant data leakage.  
+# 🔵 PHASE 4 — Production Engineering
 
 ---
 
-## Assignment-2: Plugin Architecture for Express  
-_🎯 Goal: Allow extendable Express apps._
+## Assignment 9: Rate Limiting & Security
+🎯 Protect APIs.
 
-**Tasks** ->  
-1. Create `app.register(plugin, options)`.  
-2. Plugins can:  
-   - Add middleware.  
-   - Add routes.  
-   - Set config metadata.  
-3. Load plugins from a folder.  
-
----
-
-## Assignment-3: API Versioning System  
-_🎯 Goal: Support multiple API versions._
-
-**Tasks** ->  
-1. Implement paths like:  
-/api/v1/users
-/api/v2/users
-
-2. Share logic but allow alternate controllers.  
-3. Mark deprecated endpoints with warning headers.  
+Tasks:
+1. Implement per-IP rate limiting.
+2. Add:
+   - Helmet
+   - CORS
+3. Handle brute-force login attempts.
 
 ---
 
-## Assignment-4: Distributed Session & Rolling Tokens  
-_🎯 Goal: Build scalable authentication._
+## Assignment 10: Logging & Request Tracking
+🎯 Observability basics.
 
-**Tasks** ->  
-1. Store sessions in Redis with TTL + rolling expiration.  
-2. Use short-lived access tokens + refresh rotation defense.  
-3. Invalidate stolen refresh tokens automatically.  
-
----
-
-## Assignment-5: Task Queue + Job Scheduling  
-_🎯 Goal: Offload blocking work._
-
-**Tasks** ->  
-1. Connect queue system (BullMQ or custom).  
-2. Support:  
-POST /process-image -> returns job ID
-
-3. Add `/jobs/:id/status`.  
-4. Support retries + failure logs.  
+Tasks:
+1. Add structured logging.
+2. Include:
+   - request ID
+   - response time
+3. Log errors separately.
 
 ---
 
-## Assignment-6: Multi-Region Deployment Strategy  
-_🎯 Goal: Scale globally._
+## Assignment 11: Caching Layer
+🎯 Improve performance.
 
-**Tasks** ->  
-1. Simulate multiple regional Express deployments.  
-2. Use sticky session strategies.  
-3. Add latency-based routing.  
-4. Sync configuration across regions.  
-
----
-
-## Assignment-7: Observability Suite  
-_🎯 Goal: Add metrics, logs, and tracing._
-
-**Tasks** ->  
-1. Integrate:  
-   - Route-level metrics.  
-   - Slow request detection.  
-   - Structured logging.  
-2. Add OpenTelemetry tracing.  
+Tasks:
+1. Cache GET /api/todos using:
+   - in-memory OR Redis.
+2. Invalidate cache on update.
+3. Measure response time difference.
 
 ---
 
-## Assignment-8: Feature Flag + A/B Testing System  
-_🎯 Goal: Enable dynamic features._
+## Assignment 12: Background Jobs
+🎯 Offload heavy work.
 
-**Tasks** ->  
-1. Create feature registry.  
-2. Support:  
-   - Percentage rollout.  
-   - Role-based activation.  
-   - Experiment buckets.  
-3. Add admin UI endpoint `/admin/feature-flags`.  
-
----
-
-## Assignment-9: Zero-Downtime Deployments  
-_🎯 Goal: Graceful shutdown + live reload._
-
-**Tasks** ->  
-1. Handle shutdown signals.  
-2. Drain requests before stopping.  
-3. Start new instance → hand off traffic → stop old instance.  
+Tasks:
+1. Add job queue (BullMQ or simple in-memory).
+2. Process async task:
+   - e.g., sending email.
+3. Add retry mechanism.
+4. Track job status.
 
 ---
 
-## Assignment-10: Build a Production-Ready API Gateway  
-_🎯 Goal: Route, secure, and optimize internal services._
+# 🟣 PHASE 5 — Scaling & Stability
 
-**Tasks** ->  
-1. Reverse-proxy services:  
-   - `/auth`.  
-   - `/billing`.  
-   - `/app`.  
-2. Add:  
-   - Caching.  
-   - Rate limiting.  
-   - Request rewriting.  
-   - Auth enforcement.  
+---
+
+## Assignment 13: Graceful Shutdown
+🎯 Production readiness.
+
+Tasks:
+1. Listen to SIGTERM.
+2. Stop accepting new connections.
+3. Finish ongoing requests.
+4. Close DB connections safely.
+
+---
+
+## Assignment 14: Cluster Mode Awareness
+🎯 Multi-core usage.
+
+Tasks:
+1. Use cluster module.
+2. Spawn workers.
+3. Restart worker on crash.
+4. Add health check endpoint.
+
+---
+
+## Assignment 15: OpenAPI Documentation
+🎯 Professional API standards.
+
+Tasks:
+1. Add Swagger.
+2. Document endpoints.
+3. Sync validation schema with docs.
+
+---
+
+# 🏁 Final Project
+
+---
+
+## Assignment 16: Production-Ready Todo API
+
+Combine everything:
+
+Features:
+- JWT auth
+- Role-based access
+- DB integration
+- Pagination
+- Filtering
+- Rate limiting
+- Logging
+- Caching
+- Background jobs
+- Graceful shutdown
+- Swagger documentation
+
+Requirements:
+- Clean folder structure
+- No business logic in routes
+- Centralized error handling
+- Secure configuration
+- Environment separation (dev/prod)
 
 ---

@@ -1,386 +1,286 @@
-# Foundations
-Foundational concepts to get started with React.
+# ⚛️ React SDE Curriculum 
 
-## Assignment-1: Create a React App  
-_🎯 Goal: Understand basic setup and rendering._
 
-**Tasks** ->  
-1. Create a project using:  
-   - `create-react-app` or `vite + react`.  
-2. Render:  
-   - `<h1>Hello React</h1>`.  
-   - A `<p>` showing today’s date.  
-3. Create and render at least one reusable component.  
+# 🟢 PHASE 1 — Core React Foundations
 
 ---
 
-## Assignment-2: Props & Component Hierarchy  
-_🎯 Goal: Understand component composition._
+## Assignment 1: Project Setup + Component Basics
+🎯 Understand rendering & structure.
 
-**Tasks** ->  
-1. Create:  
-   - `Header`.  
-   - `Button`.  
-   - `Card`.  
-2. Pass:  
-   - Text props.  
-   - Children props.  
-3. Make components display dynamic values using props.  
+Tasks:
+1. Setup with Vite + React.
+2. Create reusable components:
+   - Header
+   - Button
+   - Card
+3. Pass:
+   - props
+   - children
+4. Create basic layout structure.
 
----
-
-## Assignment-3: useState Basics  
-_🎯 Goal: Manage component state._
-
-**Tasks** ->  
-1. Create a counter with:  
-   - Increment.  
-   - Decrement.  
-   - Reset.  
-2. Show count in the UI.  
+Goal:
+Component composition clarity.
 
 ---
 
-## Assignment-4: Conditional Rendering  
-_🎯 Goal: Render UI based on state._
+## Assignment 2: State & Controlled Inputs
+🎯 Manage UI state correctly.
 
-**Tasks** ->  
-1. Build a login toggle:  
-   - Logged-in UI when authenticated.  
-   - Login request UI when logged out.  
+Tasks:
+1. Build a counter.
+2. Create controlled form:
+   - name
+   - email
+3. Validate inputs.
+4. Reset form properly.
 
----
-
-## Assignment-5: Lists & Keys  
-_🎯 Goal: Render dynamic arrays in UI._
-
-**Tasks** ->  
-1. Create a todo list.  
-2. Render todos in a list.  
-3. Add delete functionality.  
-4. Ensure proper React `key` usage.  
+Goal:
+Understand controlled components deeply.
 
 ---
 
-# Hooks and Forms
-Hooks, forms, and state-sharing techniques.
+## Assignment 3: Lists & Derived State
+🎯 Render dynamic data safely.
 
-## Assignment-1: Forms & Controlled Inputs  
-_🎯 Goal: Handle and validate form input._
+Tasks:
+1. Build todo list.
+2. Add:
+   - create
+   - delete
+   - toggle complete
+3. Avoid using array index as key.
+4. Compute derived values:
+   - completed count
+   - total count
 
-**Tasks** ->  
-1. Create a form with:  
-   - Text input.  
-   - Email input.  
-   - Dropdown select.  
-2. Submit and log form data.  
-3. Show validation messages.  
-
----
-
-## Assignment-2: useEffect Deep Dive  
-_🎯 Goal: Understand side effects and component lifecycle._
-
-**Tasks** ->  
-1. Fetch API data (placeholder or mock).  
-2. Show:  
-   - Loading state.  
-   - Error state.  
-   - Data state.  
-3. Auto-refresh every 10 seconds using cleanup.  
+Goal:
+Understand state-driven UI.
 
 ---
 
-## Assignment-3: Custom Hooks  
-_🎯 Goal: Reuse component logic._
-
-**Tasks** ->  
-1. Build:  
-   - `useToggle(initialValue)`.  
-   - `useFetch(url)`.  
-2. Use both hooks in components.  
-
----
----
-
-## Assignment-4: React Context  
-_🎯 Goal: Share state across components without prop drilling._
-
-**Tasks** ->  
-1. Create a Theme context.  
-2. Support:  
-   - Light theme.  
-   - Dark theme.  
-3. Add a button to toggle the theme globally.  
+# 🟡 PHASE 2 — Effects & Data Fetching
 
 ---
 
-## Assignment-5: Performance Optimization  
-_🎯 Goal: Avoid unnecessary re-renders._
+## Assignment 4: useEffect + API Integration
+🎯 Handle async data.
 
-**Tasks** ->  
-1. Use:  
-   - `React.memo`.  
-   - `useCallback`.  
-   - `useMemo`.  
-2. Compare behavior before vs after optimization.  
+Tasks:
+1. Fetch users from API.
+2. Show:
+   - loading
+   - error
+   - data
+3. Cancel previous request (AbortController).
+4. Refetch on dependency change.
 
----
-
-# State and Routing
-Building scalable applications with routing and state management.
-
-## Assignment-1: React Router  
-_🎯 Goal: Build a multi-page SPA._
-
-**Tasks** ->  
-1. Set up routing for:  
-   - Home.  
-   - About.  
-   - Users.  
-2. Add a dynamic route:  
-   - `/users/:id`.  
+Goal:
+Correct side-effect handling.
 
 ---
 
-## Assignment-2: State Management (Redux Toolkit or Zustand/MobX)  
-_🎯 Goal: Learn scalable state management._
+## Assignment 5: Debounced Search
+🎯 Avoid excessive API calls.
 
-**Tasks** ->  
-1. Create:  
-   - Counter slice.  
-   - Todo slice.  
-2. Add:  
-   - Selectors.  
-   - Persistence (localStorage).  
+Tasks:
+1. Create search input.
+2. Debounce 300ms.
+3. Show how many API calls executed.
+4. Handle rapid typing gracefully.
 
 ---
 
-## Assignment-3: Authentication Flow  
-_🎯 Goal: Implement protected routing._
+## Assignment 6: Custom Hook Extraction
+🎯 Reuse logic cleanly.
 
-**Tasks** ->  
-1. Add:  
-   - Login page.  
-   - Logout flow.  
-2. Store user session (context or global state).  
-3. Protect `/profile` route.  
+Tasks:
+1. Extract:
+   - useDebounce
+   - useFetch
+2. Ensure:
+   - proper cleanup
+   - dependency handling
+3. Use in multiple components.
 
----
-
-# UI Engineering
-Reusable UI components and advanced form handling.
-
-## Assignment-1: Component Library System  
-_🎯 Goal: Build reusable UI components._
-
-**Tasks** ->  
-1. Build:  
-   - Button.  
-   - Modal.  
-   - Badge.  
-   - Card.  
-2. Add variations:  
-   - Sizes.  
-   - Styles.  
-   - Icons.  
-   - Disabled state.  
+Goal:
+Separate logic from UI.
 
 ---
 
-## Assignment-2: Advanced Forms (React Hook Form + Schema Validation)  
-_🎯 Goal: Build real-world validated forms._
-
-**Tasks** ->  
-1. Use React Hook Form + Zod/Yup.  
-2. Implement:  
-   - Live validation.  
-   - Field-level error messages.  
-   - Form submission preview.  
+# 🟠 PHASE 3 — Routing & Auth
 
 ---
 
-## Assignment-3: File Upload + Preview  
-_🎯 Goal: Implement media upload interactions._
+## Assignment 7: React Router
+🎯 SPA routing.
 
-**Tasks** ->  
-1. Build:  
-   - Drag-and-drop file area.  
-   - Preview image before upload.  
-   - Upload progress indicator.  
-
----
-
-## Assignment-4: Infinite Scroll UI  
-_🎯 Goal: Handle large lists efficiently._
-
-**Tasks** ->  
-1. Fetch paginated items.  
-2. Load more as user scrolls.  
-3. Add:  
-   - Skeleton loading UI.  
-   - End-of-list state.  
+Tasks:
+1. Create routes:
+   - /
+   - /users
+   - /users/:id
+2. Handle not-found route.
+3. Add navigation menu.
 
 ---
 
-# Production-Ready React
-Focuses on testing, deployment, and real-time communication for production-level apps.
+## Assignment 8: Authentication Flow
+🎯 Protected UI patterns.
 
-## Assignment-1: Testing (Vitest / Jest + RTL)  
-_🎯 Goal: Test UI and business logic._
+Tasks:
+1. Create:
+   - Login page
+   - Protected profile route
+2. Store session in:
+   - Context
+3. Redirect unauthorized users.
+4. Persist session using localStorage.
 
-**Tasks** ->  
-1. Write:  
-   - Unit tests.  
-   - Integration tests.  
-2. Mock fetch calls.  
-
----
-
-## Assignment-2: Real-Time Communication (Sockets / Firebase / Subscriptions)  
-_🎯 Goal: Build live-updating UI._
-
-**Tasks** ->  
-1. Create:  
-   - Live chat OR live metrics dashboard.  
-2. Show:  
-   - Active users.  
-   - Typing indicators.  
+Goal:
+Understand guarded routes.
 
 ---
 
-## Assignment-3: Production Build + Deployment  
-_🎯 Goal: Deploy a production-ready React app._
-
-**Tasks** ->  
-1. Optimize bundle using:  
-   - Code-splitting.  
-   - Lazy-loaded routes.  
-2. Deploy to:  
-   - Vercel, Netlify, Render, or AWS.  
+# 🔵 PHASE 4 — State Management & Architecture
 
 ---
 
-# Advanced Patterns & Optimization
-Advanced concepts and patterns for building highly efficient and scalable applications.
+## Assignment 9: Context vs Global Store
+🎯 Avoid prop drilling.
 
-## Assignment-1: Debounced Search Input  
-_🎯 Objective: Learn controlled input handling with debounce to avoid excessive network calls._
+Tasks:
+1. Create Theme context.
+2. Toggle light/dark theme.
+3. Refactor part of app using:
+   - Redux Toolkit OR Zustand.
+4. Compare:
+   - When to use context
+   - When to use store
 
-**Tasks** ->  
-1. Build a search input that waits (300–500ms) after typing before triggering a fetch.  
-2. Display results below the input.  
-3. Log or show how many fetch calls were actually made.  
-
----
-
-## Assignment-2: useFetch with Cache + Revalidation  
-_🎯 Objective: Create a reusable data-fetching hook with caching and automatic refresh._
-
-**Tasks** ->  
-1. Implement a `useFetch(url)` hook that:  
-   - Caches prior responses in memory.  
-   - Serves cached data instantly on repeated calls.  
-   - Revalidates in the background and updates UI when fresh data arrives.  
-2. Show loading, cached, and updated states clearly.  
+Goal:
+State modeling maturity.
 
 ---
 
-## Assignment-3: Multi-Step Form Wizard with Persistence  
-_🎯 Objective: Build a multi-step form flow without losing progress._
+## Assignment 10: Optimizing Re-renders
+🎯 Performance awareness.
 
-**Tasks** ->  
-1. Create a 2–4 step form.  
-2. Persist data using:  
-   - LocalStorage, or  
-   - Context state that survives navigation.  
-3. Allow:  
-   - Next/Back navigation.  
-   - "Resume later" reload ability.  
-
----
-
-## Assignment-4: Infinite Scroll with Virtualized List  
-_🎯 Objective: Render large lists efficiently and load more data when scrolling._
-
-**Tasks** ->  
-1. Load initial chunk of data and render using virtualization (e.g., react-window or custom).  
-2. On scroll near the bottom, automatically fetch the next page.  
-3. Ensure only visible rows stay in the DOM.  
+Tasks:
+1. Build a dashboard with:
+   - list
+   - stats
+2. Identify unnecessary renders.
+3. Apply:
+   - React.memo
+   - useMemo
+   - useCallback
+4. Measure improvement using React DevTools.
 
 ---
 
-## Assignment-5: Reusable Modal Manager (Portal + Focus Trap)  
-_🎯 Objective: Build accessible modals that stack and manage focus correctly._
-
-**Tasks** ->  
-1. Render modal content using a React portal.  
-2. Trap focus inside the modal until closed.  
-3. Support:  
-   - ESC to close.  
-   - Click backdrop to close.  
-   - Multiple modals stacked.  
+# 🟣 PHASE 5 — Advanced UI Patterns
 
 ---
 
-## Assignment-6: Undo/Redo State Management  
-_🎯 Objective: Implement time-travel functionality for state changes._
+## Assignment 11: Modal with Portal
+🎯 Proper overlay rendering.
 
-**Tasks** ->  
-1. Store history of state snapshots or operations.  
-2. Add buttons for:  
-   - Undo.  
-   - Redo.  
-   - Reset (optional).  
-3. Apply to a simple UI (editable text, drawing tool, or form fields).  
-
----
-
-## Assignment-7: Real-Time State Sync Across Browser Tabs  
-_🎯 Objective: Sync data edits across tabs using browser communication APIs._
-
-**Tasks** ->  
-1. Use either:  
-   - `BroadcastChannel`, or  
-   - `storage` events.  
-2. Update UI instantly when another tab modifies shared state.  
-3. Handle conflict cases gracefully (last-write-wins is fine).  
+Tasks:
+1. Render modal using portal.
+2. Close via:
+   - ESC
+   - backdrop
+3. Prevent background scroll.
+4. Trap focus inside modal.
 
 ---
 
-## Assignment-8: Dynamic Form Builder from Schema  
-_🎯 Objective: Render a form purely from a JSON schema definition._
+## Assignment 12: Form Handling with React Hook Form
+🎯 Real-world form management.
 
-**Tasks** ->  
-1. Define a schema with fields (text, select, checkbox, etc.).  
-2. Generate the form UI automatically based on the schema.  
-3. Validate and submit the form without hardcoding input fields.  
-
----
-
-## Assignment-9: Optimize Slow Dashboard (Memo Rules)  
-_🎯 Objective: Practice performance optimization using memoization tools._
-
-**Tasks** ->  
-1. Start with a mock dashboard containing stats, tables, charts (dummy data okay).  
-2. Identify re-renders using React DevTools.  
-3. Apply:  
-   - `React.memo()`.  
-   - `useMemo()`.  
-   - `useCallback()`.  
-4. Measure performance before vs after.  
+Tasks:
+1. Use React Hook Form.
+2. Integrate Zod/Yup validation.
+3. Show field-level errors.
+4. Handle async submission.
 
 ---
 
-## Assignment-10: Autocomplete with Highlighted Matches  
-_🎯 Objective: Build a smart autocomplete UI with substring highlighting._
+## Assignment 13: Infinite Scroll with Virtualization
+🎯 Efficient large lists.
 
-**Tasks** ->  
-1. Render a suggestion list based on partially typed input.  
-2. Bold or style the matching portion of each suggestion.  
-3. Support:  
-   - Keyboard navigation (↑/↓).  
-   - Enter to select.  
-   - Click to select.  
+Tasks:
+1. Use react-window.
+2. Fetch paginated data.
+3. Load more on scroll.
+4. Keep DOM nodes minimal.
+
+---
+
+# 🔴 PHASE 6 — Production Readiness
+
+---
+
+## Assignment 14: Error Boundaries
+🎯 Prevent app crashes.
+
+Tasks:
+1. Create error boundary component.
+2. Simulate crash in child.
+3. Show fallback UI.
+4. Log error.
+
+---
+
+## Assignment 15: Code Splitting & Lazy Loading
+🎯 Improve performance.
+
+Tasks:
+1. Use React.lazy + Suspense.
+2. Lazy load routes.
+3. Show fallback loader.
+4. Analyze bundle size.
+
+---
+
+## Assignment 16: Testing (RTL + Vitest/Jest)
+🎯 Test UI properly.
+
+Tasks:
+1. Write tests for:
+   - form submission
+   - list rendering
+   - protected route
+2. Mock API calls.
+3. Test error states.
+
+---
+
+# 🏁 FINAL PROJECT
+
+---
+
+## Assignment 17: Full React Dashboard App
+
+Build:
+- Auth flow
+- Protected routes
+- CRUD list
+- API integration
+- Pagination
+- Search with debounce
+- Modal forms
+- Global theme
+- Error boundary
+- Code splitting
+- Basic tests
+
+Requirements:
+- Clean folder structure
+- Separation of UI & logic
+- Reusable hooks
+- Minimal unnecessary re-renders
+- Proper loading & error states
 
 ---

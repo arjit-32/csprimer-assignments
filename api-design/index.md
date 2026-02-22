@@ -1,161 +1,321 @@
-# API Design & Development
+# 🚀 API Design and Dev
 
-## Assignment-1: Design a Versioned REST API with Deprecation Policy  
-_🎯 Goal: Release `/v1` and `/v2` endpoints with structured versioning and sunset headers._  
 
-**Scenario:** Existing APIs break when new features launch.  
-**Concepts:** Versioning strategy, backward compatibility.  
+# 🟢 PHASE 1 — API Contracts & Versioning
 
 ---
 
-## Assignment-2: Implement Role-Based Access Control (RBAC)  
-_🎯 Goal: Add role enforcement to routes with middleware and a permission matrix._  
+## Assignment 1: Versioned API with Deprecation Strategy
 
-**Scenario:** Different user roles require different access patterns.  
-**Concepts:** Authorization, principle of least privilege.  
+🎯 Goal: Safe evolution of APIs.
 
----
+Requirements:
+- `/v1` and `/v2`
+- Sunset header for deprecation
+- Maintain backward compatibility
+- Add migration documentation
 
-## Assignment-3: Create Pagination, Sorting & Filtering for a Large Dataset  
-_🎯 Goal: Add cursor or offset pagination with sorting and filters._  
-
-**Scenario:** Frontend analytics view must handle thousands of records efficiently.  
-**Concepts:** Scalability, optimized querying.  
-
----
-
-## Assignment-4: Build an API Gateway With Multiple Backend Service Integrations  
-_🎯 Goal: Create a single entry point that orchestrates and proxies requests._  
-
-**Scenario:** Frontend currently calls four backend systems directly.  
-**Concepts:** Aggregation pattern, BFF layer.  
+Discuss:
+- URI versioning vs header versioning
+- Breaking vs non-breaking changes
+- Schema evolution strategies
 
 ---
 
-## Assignment-5: Enforce Rate Limiting + Throttling  
-_🎯 Goal: Implement rate limiting and burst protection per API key._  
+## Assignment 2: Strong Request/Response Contracts
 
-**Scenario:** Certain clients abuse endpoints, impacting performance.  
-**Concepts:** Fair usage enforcement, infrastructure resilience.  
+🎯 Goal: Strict validation and consistent errors.
 
----
+Tasks:
+- Enforce JSON schema validation
+- Standard error format:
+  ```json
+  { "errorCode": "", "message": "", "traceId": "" }
+  ```
+- Return consistent HTTP status codes
 
-## Assignment-6: Implement Webhooks With Secure Delivery  
-_🎯 Goal: Build a webhook subscription system with signing secrets and retry strategy._  
-
-**Scenario:** Partner systems need real-time event notifications.  
-**Concepts:** Event-driven APIs.  
-
----
-
-## Assignment-7: Add OpenAPI/Swagger Documentation With Examples & Schemas  
-_🎯 Goal: Generate auto documentation with clear types, examples, and error responses._  
-
-**Scenario:** Developers struggle to integrate due to unclear documentation.  
-**Concepts:** API documentation standards.  
+Discuss:
+- Validation at gateway vs service
+- Fail-fast principle
+- Preventing over-validation
 
 ---
 
-## Assignment-8: Build a GraphQL Layer Over an Existing REST API  
-_🎯 Goal: Expose a GraphQL wrapper that resolves to REST calls._  
+## Assignment 3: Idempotent APIs + Concurrency Control
 
-**Scenario:** Mobile app needs flexible querying with fewer round-trips.  
-**Concepts:** GraphQL schema design, resolver architecture.  
+🎯 Goal: Safe retries in distributed systems.
 
----
+Tasks:
+- Add idempotency key for POST
+- Handle duplicate request detection
+- Implement optimistic locking (version field)
 
-## Assignment-9: Implement Validation With Strong Contracts  
-_🎯 Goal: Enforce strict request/response validation with JSON schemas._  
-
-**Scenario:** API is receiving malformed or unexpected payloads.  
-**Concepts:** Data integrity, contract enforcement.  
-
----
-
-## Assignment-10: Create Idempotent POST and PUT Operations  
-_🎯 Goal: Add idempotency keys for safe repeat requests._  
-
-**Scenario:** Retry logic occasionally creates duplicate records.  
-**Concepts:** Reliability in distributed environments.  
+Discuss:
+- Race conditions
+- Lost update problem
+- Exactly-once vs at-least-once semantics
 
 ---
 
-## Assignment-11: Add Full Audit Logging & Trace IDs  
-_🎯 Goal: Log user identity, request payload, and trace reference in every request._  
-
-**Scenario:** Security/compliance requires tracking who changed what.  
-**Concepts:** Observability, compliance.  
+# 🟡 PHASE 2 — Access Control & Multi-Tenancy
 
 ---
 
-## Assignment-12: Implement a Caching Strategy  
-_🎯 Goal: Add ETag/If-None-Match caching plus server-side caching with TTL._  
+## Assignment 4: RBAC with Permission Matrix
 
-**Scenario:** Repeated requests slow down high-traffic endpoints.  
-**Concepts:** HTTP caching rules, performance tuning.  
+🎯 Goal: Role enforcement.
 
----
+Tasks:
+- Role-based middleware
+- Permission mapping
+- Deny-by-default model
 
-## Assignment-13: Support Partial Responses Using Sparse Fieldsets  
-_🎯 Goal: Allow `?fields=id,name` style minimal response payloads._  
-
-**Scenario:** API responses are too heavy for mobile devices.  
-**Concepts:** API performance optimization.  
-
----
-
-## Assignment-14: Create a Secure File Upload API  
-_🎯 Goal: Add validation, antivirus scanning, presigned URLs, and size limits._  
-
-**Scenario:** App must accept image uploads safely.  
-**Concepts:** Security hardening.  
+Discuss:
+- RBAC vs ABAC
+- Principle of least privilege
+- Centralized vs distributed auth
 
 ---
 
-## Assignment-15: Build a Health & Diagnostics Endpoint  
-_🎯 Goal: Expose `/health`, `/ready`, and `/metrics` endpoints._  
+## Assignment 5: Multi-Tenant Isolation
 
-**Scenario:** Ops team needs visibility into service health.  
-**Concepts:** SRE integration, operational readiness.  
+🎯 Goal: SaaS-safe APIs.
 
----
+Tasks:
+- Tenant ID enforcement
+- Prevent cross-tenant access
+- Data scoping at DB level
 
-## Assignment-16: Implement Multi-Tenant API Authorization  
-_🎯 Goal: Add tenant-aware routing, data isolation, and cross-tenant access prevention._  
-
-**Scenario:** SaaS product must isolate customer data.  
-**Concepts:** Tenant isolation patterns.  
-
----
-
-## Assignment-17: Add Request Queueing and Async APIs  
-_🎯 Goal: Turn long tasks into async jobs with a status polling endpoint._  
-
-**Scenario:** Some operations take too long for synchronous responses.  
-**Concepts:** Asynchronous workflows.  
+Discuss:
+- Shared DB vs isolated DB
+- Query filtering vs DB-level policies
+- Security risks
 
 ---
 
-## Assignment-18: Enforce Consistent Error Format  
-_🎯 Goal: Standardize error response contracts (error codes, traceId, docs link)._  
-
-**Scenario:** Different services return inconsistent 4xx/5xx payloads.  
-**Concepts:** API usability and consistency.  
+# 🟠 PHASE 3 — Performance & Scalability
 
 ---
 
-## Assignment-19: Build a Data Export API  
-_🎯 Goal: Create a streaming-based export endpoint with rate limits and async fallback._  
+## Assignment 6: Pagination, Filtering & Sorting
 
-**Scenario:** Users need CSV or JSON export functionality.  
-**Concepts:** Performance streaming, large payload handling.  
+🎯 Goal: Handle large datasets.
+
+Tasks:
+- Offset pagination
+- Cursor pagination
+- Sorting & filtering
+
+Discuss:
+- Cursor vs offset trade-offs
+- Index usage
+- Impact on performance
 
 ---
 
-## Assignment-20: Add Observability + API Usage Analytics  
-_🎯 Goal: Log request volume, latency, unique callers, and endpoint heatmap._  
+## Assignment 7: API Rate Limiting + Throttling
 
-**Scenario:** PM needs adoption metrics.  
-**Concepts:** Analytics, platform insights, SLA tracking.  
+🎯 Goal: Protect system from abuse.
+
+Tasks:
+- Limit per user/API key
+- Burst handling
+- Distributed limiter (Redis)
+
+Discuss:
+- Sliding window vs token bucket
+- Fairness vs strictness
+- Handling edge cases
 
 ---
+
+## Assignment 8: HTTP & Server-Side Caching
+
+🎯 Goal: Improve read performance.
+
+Tasks:
+- Implement ETag / If-None-Match
+- Add Redis cache with TTL
+- Cache invalidation on update
+
+Discuss:
+- Cache-aside vs write-through
+- Stale data trade-offs
+- Cache stampede prevention
+
+---
+
+## Assignment 9: Sparse Fieldsets & Partial Responses
+
+🎯 Goal: Reduce payload size.
+
+Tasks:
+- Support `?fields=id,name`
+- Validate allowed fields
+
+Discuss:
+- Security risks (exposing hidden fields)
+- Response shaping vs GraphQL
+
+---
+
+# 🔵 PHASE 4 — Async & Event-Driven APIs
+
+---
+
+## Assignment 10: Async Job API
+
+🎯 Goal: Handle long-running operations.
+
+Tasks:
+- POST returns job ID
+- Poll `/jobs/:id`
+- Retry logic
+- Failure status
+
+Discuss:
+- Sync vs async design
+- UX trade-offs
+- Webhook alternative
+
+---
+
+## Assignment 11: Secure Webhooks
+
+🎯 Goal: Event delivery system.
+
+Tasks:
+- Webhook registration
+- HMAC signature
+- Retry with exponential backoff
+- Dead-letter queue
+
+Discuss:
+- Webhook abuse prevention
+- Replay attack protection
+- Idempotency handling
+
+---
+
+# 🟣 PHASE 5 — API Gateway & Aggregation
+
+---
+
+## Assignment 12: API Gateway / BFF Layer
+
+🎯 Goal: Single entry point.
+
+Tasks:
+- Proxy multiple backend services
+- Aggregate responses
+- Handle auth centrally
+
+Discuss:
+- Gateway vs service mesh
+- Request orchestration cost
+- Failure handling between services
+
+---
+
+## Assignment 13: GraphQL Over REST
+
+🎯 Goal: Flexible client queries.
+
+Tasks:
+- Build schema
+- Write resolvers
+- Handle N+1 problem
+
+Discuss:
+- REST vs GraphQL trade-offs
+- Overfetching vs complexity
+- Caching implications
+
+---
+
+# 🔴 PHASE 6 — Security & Observability
+
+---
+
+## Assignment 14: Secure File Upload API
+
+🎯 Goal: Safe media handling.
+
+Tasks:
+- Presigned S3 upload
+- File validation
+- Size/type limits
+- Virus scanning simulation
+
+Discuss:
+- Backend proxy vs direct upload
+- DOS protection
+
+---
+
+## Assignment 15: Health, Readiness & Metrics
+
+🎯 Goal: Production readiness.
+
+Tasks:
+- `/health`
+- `/ready`
+- `/metrics`
+- Add latency tracking
+
+Discuss:
+- Liveness vs readiness
+- SLO/SLA tracking
+
+---
+
+## Assignment 16: Audit Logging & Trace IDs
+
+🎯 Goal: Compliance & observability.
+
+Tasks:
+- Add request traceId
+- Log user + action
+- Structured logs
+
+Discuss:
+- Log storage cost
+- PII masking
+- Correlation across services
+
+---
+
+## Assignment 17: API Usage Analytics
+
+🎯 Goal: Measure adoption.
+
+Tasks:
+- Track request count
+- Endpoint heatmap
+- Unique callers
+
+Discuss:
+- Metrics vs logs
+- Sampling strategy
+- Performance impact
+
+---
+
+# 🏁 FINAL ASSIGNMENT
+
+## Assignment 18: Design a Production-Ready Public API
+
+Pick one domain (payments, e-commerce, SaaS admin API).
+
+Explain:
+
+1. Versioning strategy
+2. Auth model
+3. Rate limiting
+4. Pagination model
+5. Caching strategy
+6. Idempotency handling
+7. Error contract
+8. Multi-tenant isolation
+9. Observability plan
+

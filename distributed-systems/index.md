@@ -1,161 +1,240 @@
-# Distributed Systems Assignments
+# 🌐 Distributed Systems for Mid–Senior Node SDE
 
-## Assignment-1: Build a Load-Balanced Microservice  
-_🎯 Goal: Deploy stateless service instances behind a load balancer with health checks._  
-
-**Scenario:** Your monolithic backend must handle increased traffic.  
-**Concepts:** Horizontal scaling, fault tolerance, statelessness.  
+# 🟢 PHASE 1 — Scaling & Statelessness
 
 ---
 
-## Assignment-2: Design and Implement Request Tracing with Correlation IDs  
-_🎯 Goal: Add correlation IDs to every request and log chain propagation._  
+## Assignment 1: Horizontal Scaling Behind Load Balancer
 
-**Scenario:** Several services call each other, making debugging painful.  
-**Concepts:** Observability, traceability, distributed logging.  
+🎯 Goal: Make service stateless.
 
----
+Tasks:
+- Run multiple Node instances.
+- Put behind load balancer.
+- Add health checks.
+- Remove in-memory session storage.
 
-## Assignment-3: Implement Circuit Breaker + Retry Logic  
-_🎯 Goal: Implement the circuit breaker pattern with exponential backoff retries._  
-
-**Scenario:** Downstream services occasionally timeout, causing cascading failures.  
-**Concepts:** Resilience patterns.  
-
----
-
-## Assignment-4: Create a Distributed Cache Layer  
-_🎯 Goal: Implement caching with TTL, invalidation rules, and cache hit metrics._  
-
-**Scenario:** Database queries are slowing down response times.  
-**Concepts:** Caching, consistency, performance optimization.  
+Discuss:
+- Sticky sessions vs stateless.
+- Why shared state breaks scaling.
 
 ---
 
-## Assignment-5: Implement Event-Driven Architecture With a Message Queue  
-_🎯 Goal: Move heavy processing to async workers using message queues._  
+## Assignment 2: Distributed Rate Limiting (Redis-Based)
 
-**Scenario:** Processing image uploads synchronously impacts user performance.  
-**Concepts:** Decoupling, asynchronous processing.  
+🎯 Goal: Shared throttling across instances.
 
----
+Tasks:
+- Implement token bucket using Redis.
+- Enforce per-user limit.
+- Handle burst traffic.
 
-## Assignment-6: Build a Service Registry + Discovery Pattern  
-_🎯 Goal: Implement service discovery (central registry or DNS-based)._  
-
-**Scenario:** New service instances spin up dynamically in the cluster.  
-**Concepts:** Dynamic routing, service mesh basics.  
-
----
-
-## Assignment-7: Implement Sharded Data Storage  
-_🎯 Goal: Split storage across shards by hash/modulo key._  
-
-**Scenario:** A user database has grown and needs partitioning.  
-**Concepts:** Data partitioning, hashing, scalability.  
+Discuss:
+- Sliding window vs token bucket.
+- What happens if Redis fails?
 
 ---
 
-## Assignment-8: Build Distributed Rate Limiting  
-_🎯 Goal: Create a rate limiter shared across distributed instances._  
-
-**Scenario:** Multiple API gateway instances need global rate throttling.  
-**Concepts:** Coordination, token buckets, shared state.  
+# 🟡 PHASE 2 — Resilience Patterns
 
 ---
 
-## Assignment-9: Create a Fault-Tolerant, Persistent Job Queue  
-_🎯 Goal: Build a queue that ensures at-least-once processing with retries._  
+## Assignment 3: Circuit Breaker + Retry
 
-**Scenario:** Jobs must survive crashes or restarts.  
-**Concepts:** Message durability, delivery guarantees.  
+🎯 Goal: Prevent cascading failures.
 
----
+Tasks:
+- Wrap downstream API calls.
+- Add timeout.
+- Add exponential backoff.
+- Open circuit after failure threshold.
 
-## Assignment-10: Implement Data Replication With Leader/Follower Strategy  
-_🎯 Goal: Implement leader–follower replication and read routing._  
-
-**Scenario:** The system must stay online even during database maintenance.  
-**Concepts:** Consistency models, read/write separation.  
-
----
-
-## Assignment-11: Build a Distributed Cron Task Scheduler  
-_🎯 Goal: Create a lock-based job coordinator to ensure tasks run exactly once across nodes._  
-
-**Scenario:** A repeating task must run exactly once across multiple service nodes.  
-**Concepts:** Distributed locking, idempotency.  
+Discuss:
+- Retry storm risk.
+- Backpressure handling.
+- Partial system degradation.
 
 ---
 
-## Assignment-12: Implement Event Sourcing for Auditability  
-_🎯 Goal: Store events as the source of truth rather than state._  
+## Assignment 4: Request Tracing with Correlation IDs
 
-**Scenario:** Business wants a full change log of order updates.  
-**Concepts:** Immutable logs, CQRS basics.  
+🎯 Goal: Debug distributed calls.
 
----
+Tasks:
+- Add correlation ID middleware.
+- Propagate via headers.
+- Log across services.
 
-## Assignment-13: Implement Idempotency in Messaging  
-_🎯 Goal: Guarantee side-effect-free processing with idempotent tokens._  
-
-**Scenario:** Some messages get processed twice during retries.  
-**Concepts:** Exactly-once semantics (logical).  
-
----
-
-## Assignment-14: Build a Replicated Cache with Consistency Guarantees  
-_🎯 Goal: Implement write-through or cache invalidation strategies._  
-
-**Scenario:** Caches across regions sometimes return stale data.  
-**Concepts:** Distributed consistency, invalidation patterns.  
+Discuss:
+- Logs vs tracing systems.
+- Debugging production failures.
 
 ---
 
-## Assignment-15: Introduce Monitoring + SLOs for Microservices  
-_🎯 Goal: Instrument metrics (P95 latency, throughput, saturation) and alerting._  
-
-**Scenario:** Latency and error rate must be trackable at scale.  
-**Concepts:** SRE practices, SLIs/SLOs.  
+# 🟠 PHASE 3 — Async & Event-Driven Systems
 
 ---
 
-## Assignment-16: Simulate Network Failures + Chaos Engineering  
-_🎯 Goal: Inject latency, packet loss, node failure, and measure resiliency._  
+## Assignment 5: Persistent Job Queue (At-Least-Once Processing)
 
-**Scenario:** System reliability assumptions need testing.  
-**Concepts:** Fault injection, chaos testing.  
+🎯 Goal: Offload heavy tasks.
 
----
+Tasks:
+- Push job to SQS or Redis queue.
+- Worker processes job.
+- Retry failed jobs.
+- Add dead-letter queue.
 
-## Assignment-17: Create a Distributed Transaction with Saga Pattern  
-_🎯 Goal: Implement saga orchestration or choreography with compensation._  
-
-**Scenario:** Placing an order affects multiple microservices.  
-**Concepts:** Eventual consistency, workflows.  
-
----
-
-## Assignment-18: Global Deployment with Multi-Region Failover  
-_🎯 Goal: Deploy a multi-region system with a failover strategy (active-passive or active-active)._  
-
-**Scenario:** Users across continents experience latency and outages.  
-**Concepts:** Geo-replication, routing policies.  
+Discuss:
+- At-least-once vs exactly-once.
+- Idempotency design.
+- Message duplication.
 
 ---
 
-## Assignment-19: Implement API Gateway + Aggregator Pattern  
-_🎯 Goal: Build a gateway that aggregates multiple backend calls._  
+## Assignment 6: Saga Pattern (Order Workflow)
 
-**Scenario:** A client app currently makes 10 calls per screen load.  
-**Concepts:** API composition, reducing chattiness.  
+🎯 Goal: Manage distributed transaction.
+
+Scenario:
+Order creation touches:
+- Payment service
+- Inventory service
+- Notification service
+
+Tasks:
+- Implement orchestration.
+- Add compensation step on failure.
+
+Discuss:
+- Eventual consistency.
+- Compensating transactions.
+- When to avoid distributed transactions.
 
 ---
 
-## Assignment-20: Design a Conflict Resolution Mechanism in Distributed Writes  
-_🎯 Goal: Implement CRDTs, vector clocks, or last-write-wins logic._  
+## Assignment 7: Idempotent Event Processing
 
-**Scenario:** Two users edit the same document from different regions.  
-**Concepts:** Concurrency control, eventual consistency.  
+🎯 Goal: Handle duplicate events safely.
+
+Tasks:
+- Store processed message IDs.
+- Prevent duplicate side effects.
+
+Discuss:
+- Retry logic.
+- Why exactly-once is impossible (practically).
+- Logical idempotency.
 
 ---
+
+# 🔵 PHASE 4 — Data & Consistency
+
+---
+
+## Assignment 8: Read/Write Separation
+
+🎯 Goal: Scale DB reads.
+
+Tasks:
+- Simulate primary + read replica.
+- Route reads separately.
+- Handle replication lag.
+
+Discuss:
+- Eventual consistency.
+- Read-after-write issues.
+- When to use replicas.
+
+---
+
+## Assignment 9: Sharding Strategy (Conceptual + Light Implementation)
+
+🎯 Goal: Handle large dataset.
+
+Tasks:
+- Shard by user ID hash.
+- Route request to correct shard.
+
+Discuss:
+- Hot partition problem.
+- Rebalancing difficulty.
+- Operational complexity.
+
+(No need to implement full shard migration.)
+
+---
+
+# 🟣 PHASE 5 — Observability & Reliability
+
+---
+
+## Assignment 10: SLOs + Monitoring
+
+🎯 Goal: Production reliability mindset.
+
+Tasks:
+- Track P95 latency.
+- Track error rate.
+- Set alert threshold.
+- Simulate failure.
+
+Discuss:
+- Error budget.
+- Alert fatigue.
+- Degradation strategy.
+
+---
+
+## Assignment 11: Chaos Simulation (Lightweight)
+
+🎯 Goal: Test resilience.
+
+Tasks:
+- Inject latency.
+- Simulate service crash.
+- Observe retry & circuit breaker behavior.
+
+Discuss:
+- Fault tolerance assumptions.
+- Realistic failure scenarios.
+
+---
+
+# 🟤 PHASE 6 — API Aggregation
+
+---
+
+## Assignment 12: API Gateway Aggregator
+
+🎯 Goal: Reduce client chattiness.
+
+Tasks:
+- Aggregate 3 service calls.
+- Handle partial failure.
+- Return graceful fallback.
+
+Discuss:
+- Backend-for-Frontend pattern.
+- Latency stacking.
+- Timeout strategy.
+
+---
+
+# 🏁 FINAL ASSIGNMENT
+
+---
+
+## Assignment 13: Scale from 1k → 50k RPS
+
+Pick one system and explain:
+
+1. Add load balancing.
+2. Add caching.
+3. Add async processing.
+4. Add rate limiting.
+5. Add read replicas.
+6. Add monitoring.
+7. Handle failure scenarios.
+
+Explain trade-offs clearly.

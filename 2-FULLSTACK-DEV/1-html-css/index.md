@@ -251,19 +251,3 @@ Tasks ->
 
 ---
 
-## Assignment-19: Landing Page (Multi-section Layout)  
-_Goal: Build a real webpage layout._  
-
-Sections ->  
-- Hero  
-- Features  
-- Testimonials  
-- Pricing  
-- Footer  
-
-Requirements ->  
-- Flex + Grid combination  
-- Responsive  
-- Consistent spacing  
-- Buttons, cards, icons, typography  
-

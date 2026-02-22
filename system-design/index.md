@@ -1,56 +1,282 @@
-# System Design Mastery Assignments
+# 🧠 System Design for Mid–Senior SDE
 
-Focus on key aspects like requirements gathering, trade-offs, diagrams (UML/component), scalability, reliability, and edge cases. Practice sketching on paper/whiteboard and explaining verbally.
 
-### Level 1 – LLD Fundamentals (1–4)
+# 🟢 PHASE 1 — LLD (Backend-Oriented)
 
-1. **Design a Parking Lot System**  
-   Model classes/interfaces for vehicles, parking spots (handicap, compact, large), levels, and payment. Handle entry/exit, spot assignment, fees. Consider extensibility for sensors or electric charging.
+---
 
-2. **Design an Elevator System**  
-   Create classes for elevators, floors, requests, and controllers. Implement scheduling algorithms (e.g., FCFS, shortest seek), handle multiple elevators, maintenance mode, and overload scenarios.
+## Assignment 1: Design a Rate Limiter
 
-3. **Design a Deck of Cards Game**  
-   Model cards, suits, ranks, deck shuffling/dealing. Extend to a simple game like Blackjack: include players, dealer, betting, win conditions. Focus on OOP principles (inheritance, polymorphism).
+🎯 Goal: Control API traffic safely.
 
-4. **Design a Vending Machine**  
-   Classes for items, inventory, coins/notes, payment processing, and state machine (idle, selecting, dispensing). Handle change calculation, out-of-stock, and error states like jammed items.
+Requirements:
+- Limit requests per user/IP.
+- Sliding window or token bucket.
+- Support distributed environment.
 
-### Level 2 – Advanced LLD (5–7)
+Discussion:
+- In-memory vs Redis.
+- Handling clock drift.
+- Handling burst traffic.
+- API idempotency.
 
-5. **Design an LRU Cache**  
-   Implement a Least Recently Used cache with O(1) get/put. Use data structures like hashmap + doubly-linked list. Discuss thread-safety, eviction policies, and variations like LFU.
+---
 
-6. **Design a Restaurant Reservation System**  
-   Model tables, reservations, users, time slots. Handle bookings, cancellations, waitlists, no-shows. Include notifications and integration points for payments or reviews.
+## Assignment 2: Design a Caching Layer
 
-7. **Design a File System**  
-   Create a hierarchical structure with directories, files, permissions. Support operations like create/read/write/delete, search, and symlinks. Consider disk space management and concurrency.
+🎯 Goal: Reduce DB load.
 
-### Level 3 – HLD Fundamentals (8–11)
+Requirements:
+- Cache-aside pattern.
+- TTL handling.
+- Invalidation on write.
 
-8. **Design a URL Shortener (TinyURL)**  
-   High-level architecture: hashing for short keys, database choices (SQL/NoSQL), redirection service. Address collisions, analytics, expiration, scalability with partitioning.
+Discussion:
+- Redis vs in-memory.
+- Stale data trade-offs.
+- Cache stampede prevention.
 
-9. **Design a Key-Value Store (like Redis)**  
-   Components: in-memory storage, persistence, replication, sharding. Handle consistency (eventual vs strong), eviction, and high availability. Discuss CAP theorem trade-offs.
+---
 
-10. **Design a Notification System**  
-    For push/email/SMS: event triggers, queues, workers, user preferences. Scale for high volume, handle failures/retries, and personalization. Integrate with external services.
+## Assignment 3: Design a Background Job Queue
 
-11. **Design a Chat System (like WhatsApp)**  
-    Real-time messaging: WebSockets, message queues (Kafka), storage (Cassandra). Cover online/offline status, group chats, media, end-to-end encryption, and global scaling.
+🎯 Goal: Offload heavy tasks.
 
-### Level 4 – Complex HLD (12–15)
+Requirements:
+- Push job via API.
+- Process asynchronously.
+- Retry with backoff.
+- DLQ for failures.
 
-12. **Design Twitter (or X)**  
-    Timeline generation, feeds (fan-out vs fan-in), trending topics, search. Handle high read/write, caching (Redis), sharding users/tweets, and moderation.
+Discussion:
+- SQS vs Kafka.
+- At-least-once delivery.
+- Idempotency design.
 
-13. **Design Uber (Ride-Sharing)**  
-    Matching riders/drivers: geohashing, ETA calculation, routing. Components: dispatch service, payments, maps integration. Address surge pricing, safety, and real-time tracking.
+---
 
-14. **Design Netflix (Video Streaming)**  
-    Content recommendation, CDN for delivery, encoding/transcoding. Handle user profiles, A/B testing, offline downloads, and global replication for low latency.
+## Assignment 4: Design an Authentication System
 
-15. **Design a Web Crawler**  
-    Polite crawling: URL frontier (priority queue), duplicate detection (Bloom filter), robots.txt respect. Scale with distributed workers, storage (HDFS), and handling dynamic content.
+🎯 Goal: Secure APIs.
+
+Requirements:
+- JWT-based auth.
+- Refresh token rotation.
+- Role-based access.
+
+Discussion:
+- Stateless vs session-based.
+- Token storage risks.
+- Rate limiting login attempts.
+
+---
+
+# 🟡 PHASE 2 — Practical HLD (Common Interview Problems)
+
+---
+
+## Assignment 5: Design a URL Shortener
+
+🎯 Goal: Handle read-heavy workload.
+
+Key Focus:
+- ID generation (hash vs base62).
+- DB choice (SQL vs NoSQL).
+- Cache hot URLs.
+- Expiration handling.
+- Scaling to millions of requests.
+
+Discuss:
+- Write vs read scaling.
+- Analytics tracking.
+- Preventing abuse.
+
+---
+
+## Assignment 6: Design a Notification System
+
+🎯 Goal: Multi-channel delivery.
+
+Requirements:
+- Email, SMS, push.
+- User preferences.
+- Retry & DLQ.
+- High throughput.
+
+Discuss:
+- Fan-out architecture.
+- Event-driven vs sync.
+- Failure handling.
+
+---
+
+## Assignment 7: Design a Chat System
+
+🎯 Goal: Real-time communication.
+
+Requirements:
+- WebSocket connections.
+- Store messages.
+- Handle offline users.
+- Group chats.
+
+Discuss:
+- Scaling WebSocket servers.
+- Message ordering.
+- Redis pub/sub usage.
+- Horizontal scaling.
+
+---
+
+## Assignment 8: Design an E-Commerce Backend
+
+🎯 Goal: Full-stack backend system.
+
+Components:
+- Product catalog.
+- Cart.
+- Orders.
+- Payments.
+- Inventory.
+
+Discuss:
+- Transaction handling.
+- Prevent overselling.
+- Event-driven order processing.
+- Caching hot products.
+- Database sharding strategy.
+
+---
+
+# 🟠 PHASE 3 — Scaling & Reliability
+
+---
+
+## Assignment 9: Design a File Upload & Processing System
+
+🎯 Goal: Handle large files.
+
+Flow:
+- Upload to S3 via presigned URL.
+- Process via Lambda/worker.
+- Update DB status.
+
+Discuss:
+- Handling partial uploads.
+- Virus scanning.
+- Retry & idempotency.
+- Cost implications.
+
+---
+
+## Assignment 10: Design a High-Traffic API (10k RPS)
+
+🎯 Goal: Scale backend safely.
+
+Discuss:
+- Load balancer.
+- Horizontal scaling.
+- Redis caching.
+- Read replicas.
+- Rate limiting.
+- Observability.
+
+Include:
+- Failure scenarios.
+- Degradation strategy.
+
+---
+
+## Assignment 11: Design a Multi-Tenant SaaS Backend
+
+🎯 Goal: Isolation & scalability.
+
+Requirements:
+- Tenant isolation.
+- Shared DB vs separate DB.
+- Role management.
+- Billing integration.
+
+Discuss:
+- Data leaks prevention.
+- Index strategy.
+- Cost trade-offs.
+
+---
+
+# 🔴 PHASE 4 — Cloud-Aware Architecture
+
+---
+
+## Assignment 12: Design Serverless Order Processing System
+
+🎯 Goal: Event-driven cloud system.
+
+Architecture:
+- API Gateway → Lambda.
+- SQS.
+- DynamoDB.
+- SNS notifications.
+
+Discuss:
+- Cold starts.
+- Concurrency.
+- DLQ handling.
+- Cost comparison with containers.
+
+---
+
+## Assignment 13: Design Microservices Communication
+
+🎯 Goal: Service-to-service architecture.
+
+Compare:
+- REST sync calls.
+- Event-driven messaging.
+- gRPC.
+
+Discuss:
+- Circuit breaker.
+- Timeouts.
+- Retry strategy.
+- Observability.
+
+---
+
+## Assignment 14: Design Scalable Search System
+
+🎯 Goal: Efficient querying.
+
+Requirements:
+- Search by name.
+- Autocomplete.
+- Ranking.
+
+Discuss:
+- SQL full-text vs ElasticSearch.
+- Index design.
+- Caching.
+- Write amplification.
+
+---
+
+# 🏁 FINAL ASSIGNMENT
+
+---
+
+## Assignment 15: End-to-End Architecture Walkthrough
+
+Pick one system and explain:
+
+1. Requirements clarification.
+2. API design.
+3. Data modeling.
+4. Scaling strategy.
+5. Failure scenarios.
+6. Cost trade-offs.
+7. Security considerations.
+8. Deployment strategy.
+9. Observability plan.
+
+
+---

@@ -1,72 +1,339 @@
-# AWS Mastery Assignments
+# ☁️ AWS for SDE 
 
-prioritize core developer-relevant topics: serverless, containers, storage, databases, networking/security basics, observability, CI/CD, and IaC 
-Focus on hands-on building, explaining trade-offs (cost/performance/scalability/security), and verbal walkthroughs (as in interviews). Use free tier where possible.
+---
 
-### Level 1 – Core Compute & Storage (1–5)
+# 🟢 PHASE 1 — Serverless & Event-Driven Backend
 
-1. **Deploy a Serverless REST API with API Gateway + Lambda + DynamoDB**  
-   Build a CRUD API (e.g., todo list) → integrate DynamoDB → add IAM role for least privilege → handle errors/retries.  
-   **Focus:** Serverless architecture, event-driven design, NoSQL modeling.
+---
 
-2. **Build & Deploy a Containerized Service on ECS Fargate**  
-   Dockerize a simple Node.js/Go/Spring service → push to ECR → deploy to Fargate with auto-scaling group and ALB.  
-   **Focus:** Container basics, ECS vs EKS decision, logging to CloudWatch.
+## Assignment 1: Serverless REST API (API Gateway + Lambda + DynamoDB)
 
-3. **Implement S3 Static Website + CloudFront CDN + Route 53**  
-   Host a static React/Vue site on S3 → add CloudFront distribution → configure custom domain + HTTPS via ACM.  
-   **Focus:** Object storage, global distribution, caching behaviors, signed URLs.
+🎯 Goal: Build scalable event-driven API.
 
-4. **Secure File Uploads with S3 Presigned URLs**  
-   Generate presigned PUT URLs from a backend (Lambda or EC2) → allow direct browser-to-S3 uploads → enforce policies (e.g., content-type, expiration).  
-   **Focus:** Direct-to-cloud patterns, security without proxying large files.
+### Tasks:
+1. Build CRUD API using:
+   - API Gateway
+   - Lambda
+   - DynamoDB
+2. Add:
+   - Proper IAM least-privilege role
+   - Structured logging
+   - Input validation
+3. Implement:
+   - Idempotent writes
+   - Error handling
+4. Enable CloudWatch logs.
 
-5. **Add Caching Layer with ElastiCache (Redis/Memcached)**  
-   Integrate Redis cache in front of DynamoDB/RDS → implement cache-aside pattern with TTL → handle cache invalidation.  
-   **Focus:** Performance optimization, read-heavy workloads, fallback logic.
+### Interview Readiness:
+- Explain cold starts.
+- Explain Lambda concurrency limits.
+- Explain DynamoDB partition key choice.
+- Compare Lambda vs ECS for this use case.
+- Discuss cost model (pay per request).
 
-### Level 2 – Databases & Messaging (6–9)
+---
 
-6. **Model & Scale a DynamoDB Table with GSIs & On-Demand**  
-   Design table for high-read access (e.g., user profiles + orders) → add Global Secondary Indexes → enable TTL + on-demand capacity.  
-   **Focus:** Partition key/sort key design, hot key mitigation, cost modeling.
+## Assignment 2: Async Processing with SQS + Lambda
 
-7. **Provision RDS (Aurora/MySQL/PostgreSQL) with Secrets Manager**  
-   Deploy Aurora Serverless v2 → store credentials in Secrets Manager → rotate automatically → connect from Lambda/ECS.  
-   **Focus:** Relational DB in cloud, connection pooling, secure secrets handling.
+🎯 Goal: Decouple request processing.
 
-8. **Decouple Services with SQS + SNS (Fan-out Pattern)**  
-   Publish order events via SNS → multiple SQS queues subscribe (e.g., email, inventory, analytics) → process with Lambda.  
-   **Focus:** Asynchronous decoupling, dead-letter queues, visibility timeout.
+### Tasks:
+1. Modify API to:
+   - Push event to SQS.
+2. Lambda consumes from SQS.
+3. Configure:
+   - Visibility timeout
+   - Dead-letter queue
+4. Simulate failure and retry.
 
-9. **Orchestrate Multi-Step Workflow with Step Functions**  
-   Build state machine: validate input → call Lambda → wait for approval → update DynamoDB → send notification. Add retries/parallel branches.  
-   **Focus:** Workflow coordination, error handling, visual debugging.
+### Interview Readiness:
+- Explain at-least-once delivery.
+- Explain idempotency importance.
+- Explain DLQ usage.
+- What happens if consumer crashes?
+- How does scaling work?
 
-### Level 3 – Networking, Security & Observability (10–12)
+---
 
-10. **Design Secure VPC with Private/Public Subnets**  
-    Create VPC → public subnet with NAT Gateway → private subnet for ECS/Lambda → security groups + NACLs → expose via ALB/API Gateway.  
-    **Focus:** Networking fundamentals, private resources, least-privilege access.
+## Assignment 3: Fan-out with SNS + Multiple SQS Queues
 
-11. **Implement Fine-Grained IAM & AssumeRole Patterns**  
-    Create IAM roles for Lambda/ECS → use STS AssumeRole for cross-account/temp creds → apply condition keys (e.g., source IP, MFA).  
-    **Focus:** Security best practices, least privilege, temporary credentials.
+🎯 Goal: Event-driven architecture.
 
-12. **Set Up Observability with CloudWatch Logs/Metrics + Alarms + X-Ray**  
-    Enable structured JSON logging → create custom metrics → set alarms → add X-Ray tracing to Lambda/API Gateway.  
-    **Focus:** Production monitoring, distributed tracing, alerting.
+### Tasks:
+1. Publish order event via SNS.
+2. Create:
+   - Inventory queue
+   - Email queue
+   - Analytics queue
+3. Each handled by Lambda.
 
-### Level 4 – Deployment & IaC (13–15)
+### Interview Readiness:
+- Explain SNS vs SQS.
+- Explain fan-out pattern.
+- Compare event-driven vs synchronous API call.
 
-13. **Build CI/CD Pipeline with CodePipeline + CodeBuild + CodeDeploy**  
-    Trigger on Git push → build/test Docker image → deploy to ECS or Lambda → add manual approval stage.  
-    **Focus:** Automated deployments, blue/green strategy basics.
+---
 
-14. **Provision Infrastructure with AWS CDK (or Terraform)**  
-    Use CDK (preferred for developers) to define VPC, Lambda, DynamoDB, IAM → synthesize/deploy → show diff on changes.  
-    **Focus:** Infrastructure as Code, reproducibility, version control of infra.
+# 🟡 PHASE 2 — Containers & Compute Trade-offs
 
-15. **Implement Blue/Green or Canary Deployment**  
-    Use CodeDeploy or ECS blue/green → demonstrate rollback → explain traffic shifting and validation hooks.  
-    **Focus:** Safe releases, zero-downtime, deployment patterns.
+---
+
+## Assignment 4: Containerized Service on ECS Fargate
+
+🎯 Goal: Run backend as container.
+
+### Tasks:
+1. Dockerize Node service.
+2. Push to ECR.
+3. Deploy to ECS Fargate.
+4. Attach ALB.
+5. Enable auto-scaling based on CPU.
+
+### Interview Readiness:
+- When to choose ECS over Lambda?
+- Cost comparison.
+- Scaling behavior.
+- How rolling deployments work.
+
+---
+
+## Assignment 5: Compare Lambda vs ECS
+
+🎯 Goal: Trade-off thinking.
+
+### Tasks:
+1. Deploy same API in:
+   - Lambda
+   - ECS
+2. Compare:
+   - Cold start
+   - Latency
+   - Cost (low vs steady traffic)
+   - Scaling model
+
+### Interview Readiness:
+Explain decision matrix clearly.
+
+---
+
+# 🟠 PHASE 3 — Databases & Caching
+
+---
+
+## Assignment 6: RDS (Aurora/MySQL/Postgres) + Secrets Manager
+
+🎯 Goal: Managed relational DB in cloud.
+
+### Tasks:
+1. Deploy RDS.
+2. Store credentials in Secrets Manager.
+3. Connect from ECS/Lambda.
+4. Implement connection pooling strategy.
+
+### Interview Readiness:
+- Explain RDS vs DynamoDB.
+- Discuss scaling limitations.
+- Discuss connection exhaustion problem.
+
+---
+
+## Assignment 7: Add Redis (ElastiCache) for Caching
+
+🎯 Goal: Reduce DB load.
+
+### Tasks:
+1. Implement cache-aside pattern.
+2. Add TTL.
+3. Invalidate cache on update.
+4. Simulate cache failure.
+
+### Interview Readiness:
+- Explain cache-aside vs write-through.
+- Discuss stale data risks.
+- Discuss memory eviction policy.
+
+---
+
+# 🔵 PHASE 4 — Storage & CDN
+
+---
+
+## Assignment 8: S3 + Presigned Upload
+
+🎯 Goal: Secure file uploads.
+
+### Tasks:
+1. Backend generates presigned PUT URL.
+2. Client uploads directly to S3.
+3. Restrict:
+   - File type
+   - Expiration
+4. Block public bucket access.
+
+### Interview Readiness:
+- Why not upload through backend?
+- Explain signed URL security.
+- Explain S3 cost model.
+
+---
+
+## Assignment 9: Static Site + CloudFront + Route 53
+
+🎯 Goal: Global frontend hosting.
+
+### Tasks:
+1. Deploy React build to S3.
+2. Add CloudFront distribution.
+3. Configure HTTPS (ACM).
+4. Add cache invalidation.
+
+### Interview Readiness:
+- Explain CDN caching.
+- Explain edge locations.
+- Discuss cost optimization.
+
+---
+
+# 🟣 PHASE 5 — Networking & Security Basics
+
+---
+
+## Assignment 10: VPC with Public & Private Subnets
+
+🎯 Goal: Understand cloud networking fundamentals.
+
+### Tasks:
+1. Create:
+   - Public subnet (ALB)
+   - Private subnet (ECS/RDS)
+2. Configure:
+   - Security groups
+3. Ensure private DB not publicly accessible.
+
+### Interview Readiness:
+- Explain public vs private subnet.
+- Explain security group vs NACL (high level).
+- Why keep DB private?
+
+---
+
+## Assignment 11: IAM Best Practices
+
+🎯 Goal: Least privilege access.
+
+### Tasks:
+1. Create:
+   - Lambda execution role
+   - ECS task role
+2. Restrict access to:
+   - Specific S3 bucket
+   - Specific DynamoDB table
+3. Test denied access scenario.
+
+### Interview Readiness:
+- Explain principle of least privilege.
+- Explain temporary credentials.
+- Discuss risks of over-permission.
+
+---
+
+# 🔴 PHASE 6 — Observability & Failure Handling
+
+---
+
+## Assignment 12: Structured Logging + Metrics + Alarms
+
+🎯 Goal: Production monitoring.
+
+### Tasks:
+1. Add structured JSON logs.
+2. Create custom CloudWatch metrics.
+3. Create alarm for:
+   - Error rate
+   - High latency
+4. Simulate error spike.
+
+### Interview Readiness:
+- Logs vs metrics vs tracing.
+- Alert fatigue.
+- Error budget concept.
+
+---
+
+## Assignment 13: Distributed Tracing with X-Ray
+
+🎯 Goal: Trace request across services.
+
+### Tasks:
+1. Enable X-Ray on:
+   - API Gateway
+   - Lambda
+2. Observe trace flow.
+3. Identify slow component.
+
+### Interview Readiness:
+Explain how tracing helps debug production issues.
+
+---
+
+# 🟤 PHASE 7 — CI/CD & Infrastructure as Code
+
+---
+
+## Assignment 14: Infrastructure with AWS CDK
+
+🎯 Goal: Define infra programmatically.
+
+### Tasks:
+1. Define:
+   - Lambda
+   - DynamoDB
+   - IAM
+2. Deploy via CDK.
+3. Make change → show diff.
+
+### Interview Readiness:
+- Why IaC?
+- Compare CDK vs Terraform.
+- Benefits for team collaboration.
+
+---
+
+## Assignment 15: CI/CD Pipeline
+
+🎯 Goal: Automated deployment.
+
+### Tasks:
+1. On Git push:
+   - Run tests
+   - Build Docker image
+   - Deploy to ECS/Lambda
+2. Add staging environment.
+3. Simulate rollback.
+
+### Interview Readiness:
+- Blue/green deployment.
+- Canary rollout.
+- Safe release strategies.
+
+---
+
+# 🏁 FINAL CAPSTONE
+
+---
+
+## Assignment 16: Full Architecture Walkthrough
+
+Take one system and explain:
+
+1. Architecture diagram.
+2. Scaling strategy.
+3. Failure handling.
+4. Cost drivers.
+5. Security model.
+6. Deployment flow.
+7. Monitoring & alerting.
+8. Trade-offs made.
+
+
+---
