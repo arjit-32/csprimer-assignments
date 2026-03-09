@@ -23,6 +23,8 @@ Output: true]
 Output: false]
 */
 
+---
+
 /* 
 QUESTION: Write a Java program to compute the factorial of a given integer.
 EXAMPLES:
@@ -46,6 +48,8 @@ EXAMPLES:
 Output: 2]   // 10! = 3628800
 */
 
+---
+
 /* 
 QUESTION: Write a Java program to find the GCD of two integers.
 EXAMPLES:
@@ -66,6 +70,8 @@ EXAMPLES:
 [Input: {12, 18, 24}
 Output: 6]
 */
+
+---
 
 /* 
 QUESTION: Write a Java program to check if a given integer is prime.
@@ -89,6 +95,8 @@ EXAMPLES:
 [Input: 30
 Output: 2 3 5 7 11 13 17 19 23 29]
 */
+
+---
 
 /* 
 QUESTION: Write a Java program to print the prime factors of a given integer.

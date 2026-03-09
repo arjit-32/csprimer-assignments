@@ -109,7 +109,7 @@ Tasks:
 
 Tasks:
 1. Use:
-   - PostgreSQL (Prisma) OR
+   - MySQL (Prisma) OR
    - MongoDB (Mongoose)
 2. Move todos to DB.
 3. Add:
@@ -238,6 +238,7 @@ Features:
 - Background jobs
 - Graceful shutdown
 - Swagger documentation
+- Write Proper Tests using Jest & Supertest
 
 Requirements:
 - Clean folder structure
