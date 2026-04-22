@@ -1,8 +1,14 @@
 /* 
-QUESTION: Write a Java program to count trailing zeros in the factorial of a given integer.
-EXAMPLES:
-[Input: 10
-Output: 2]   // 10! = 3628800
+ID: 7-trailing-zeros-factorial
+TITLE: "Trailing Zeros in Factorial",
+
+QUESTION: Write a Java program to count the number of trailing zeros in n!.
+
+TESTS: [
+  { input: [5], expected: 1 },
+  { input: [10], expected: 2 },
+  { input: [25], expected: 6 }
+],
 */
 
 

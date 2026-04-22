@@ -1,8 +1,14 @@
 /* 
-QUESTION: Write a Java program to find the GCD of an array of integers.
-EXAMPLES:
-[Input: {12, 18, 24}
-Output: 6]
+ID: 10-gcd-array
+TITLE: "GCD of an Array",
+
+QUESTION: Write a Java program to compute the GCD of all numbers in an array.
+
+TESTS: [
+  { input: [[2, 4, 6, 8]], expected: 2 },
+  { input: [[3, 9, 27]], expected: 3 },
+  { input: [[5, 10, 15]], expected: 5 }
+],
 */
 
 //  SOLUTION - O(n * log(min(a,b))) 

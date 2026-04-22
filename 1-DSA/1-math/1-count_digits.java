@@ -1,12 +1,17 @@
 /* 
-QUESTION: Write a Java program to count the number of digits in a given integer.
+ID: 1-count-digits
+TITLE: "Count Digits in an Integer",
 
-EXAMPLES:
-[Input: 12345
-Output: 5]
+QUESTION: Write a Java program to count the number of digits in a given integer using a loop.
+
+TESTS: [
+  { input: [12345], expected: 5 },
+  { input: [7], expected: 1 },
+  { input: [1000], expected: 4 }
+],
 */
 
-//  SOLUTION - O(log{10}(n))
+// O(log{10}(n))
 import java.util.*;
 
 class Main{
@@ -28,7 +33,7 @@ class Main{
 }
 
 
-//  SOLUTION - O(1)
+// O(1)
 public static int countDigits(int n) {
     if (n == 0) return 1;
     return (int)Math.log10(Math.abs(n)) + 1;

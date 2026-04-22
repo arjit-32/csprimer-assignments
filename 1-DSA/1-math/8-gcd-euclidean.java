@@ -1,8 +1,14 @@
 /* 
-QUESTION: Write a Java program to find the GCD of two integers.
-EXAMPLES:
-[Input: 12, 18
-Output: 6]
+ID: 8-gcd-euclidean
+TITLE: "GCD of Two Numbers",
+
+QUESTION: Write a Java program to find the greatest common divisor (GCD) of two numbers using the Euclidean algorithm.
+
+TESTS: [
+  { input: [54, 24], expected: 6 },
+  { input: [48, 18], expected: 6 },
+  { input: [7, 3], expected: 1 }
+],
 */
 
 //  SOLUTION - O(log(min(x,y)))

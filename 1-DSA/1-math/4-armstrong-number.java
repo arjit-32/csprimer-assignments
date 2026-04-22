@@ -1,10 +1,14 @@
 /* 
-QUESTION: Write a Java program to check if a given integer is an Armstrong number.
-EXAMPLES:
-[Input: 153
-Output: true]
-[Input: 123
-Output: false]
+ID: 4-armstrong-number
+TITLE: "Check Armstrong Number",
+
+QUESTION: Write a Java program to check whether a given number is an Armstrong number.
+
+TESTS: [
+  { input: [153], expected: true },
+  { input: [370], expected: true },
+  { input: [123], expected: false }
+],
 */
 
 //  SOLUTION - O(log{10}(n))

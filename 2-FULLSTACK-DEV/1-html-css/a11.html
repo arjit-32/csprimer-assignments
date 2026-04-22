@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assignment-11: Icons & SVG</title>
+  <!-- FontAwesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .icon {
+      font-size: 24px;
+      margin-right: 10px;
+    }
+    .logo {
+      width: 120px;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Assignment-11: Icons and SVG</h1>
+  <hr>
+   <!-- 1. Icon Font -->
+  <h2>Icons from FontAwesome</h2>
+  <i class="fa-solid fa-heart icon" style="color:red;"></i>
+  <i class="fa fa-solid fa-plus"></i>
+  <i class="fa fa-solid fa-circle"></i>
+  <i class="fa fa-solid fa-message"></i>
+
+  <!-- 2. Inline SVG -->
+  <h2>Custom SVG Icons</h2>
+    <div>
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="blue" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10" stroke="black" stroke-width="2" fill="lightblue"/>
+            <path d="M12 6v6l4 2" stroke="black" stroke-width="2" fill="none"/>
+        </svg>
+    </div>
+    <br>
+    <div>
+        <svg class="logo" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+        <rect width="200" height="60" rx="10" fill="#0077cc"/>
+        <circle cx="40" cy="30" r="20" fill="white"/>
+        <text x="80" y="35" font-size="20" fill="white" font-family="Arial" font-weight="bold">
+            Logo
+        </text>
+        </svg>
+    </div>
+</body>
+</html>

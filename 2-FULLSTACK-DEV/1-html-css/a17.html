@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assignment-17: CSS Architecture (BEM) </title>
+  <style>
+    /* Block - Independent component that holds the base styling*/
+   .card {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: #fff;
+    max-width: 300px;
+  }
+
+  /* Elements within Block - These are parts of the block */
+  .card__title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+  .card__content {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  /* Modifier - A variation of the card block*/
+  .card--featured {
+    border-color: #007bff;
+    background-color: #f0f8ff;
+  }
+
+  </style>
+</head>
+<body>
+  <h1>Assignment-17: CSS Architecture (BEM) </h1>
+  <hr>
+  <div class="card">
+    <h2 class="card__title">Regular Card</h2>
+    <p class="card__content">This is a simple card component.</p>
+  </div>
+
+  <div class="card card--featured">
+    <h2 class="card__title">Featured Card</h2>
+    <p class="card__content">This card is highlighted as featured.</p>
+  </div>
+
+
+</body>
+</html>

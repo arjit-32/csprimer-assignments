@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>   
+      .container{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+      .item{
+        width: 100%;
+        background: pink;
+      }
+
+      @media (min-width: 600px) {
+        .container{
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (min-width: 900px) {
+         .container{
+          grid-template-columns: 1fr 2fr 1fr;
+        }
+      }
+
+      /* RESPONSIVE NAVBAR */
+      #menu-toggle , .menu{
+        display: none;
+      }
+
+      /* - If the checkbox is checked, then the .menu that comes after .menu-icon should be displayed. */
+      #menu-toggle:checked + .menu-icon + .menu {
+        display: block;
+      }
+
+      @media (min-width: 600px) {
+        .menu {
+          display: block;
+        }
+        .menu-icon {
+            display: none; /* hide hamburger on desktop */
+          }
+      }
+    </style>
+</head>
+<body>
+    <h1>Assignment 9: Responsive Design </h1>
+    <hr>
+    
+    <h3>Responsive Layout</h3>
+    <div class="container">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+    </div>
+
+    <hr>
+
+    <h3>Responsive Nav</h3>
+    <nav class="navbar">
+      <input type="checkbox" id="menu-toggle">
+      <label for="menu-toggle" class="menu-icon">&#9776;</label>
+
+      <ul class="menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+</body>
+</html>

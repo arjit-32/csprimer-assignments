@@ -1,8 +1,14 @@
 /* 
-QUESTION: Write a Java program to compute the factorial of a given integer.
-EXAMPLES:
-[Input: 5
-Output: 120]
+ID: 5-factorial
+TITLE: "Factorial",
+
+QUESTION: Write a Java program to compute the factorial of a number using an iterative approach.
+
+TESTS: [
+  { input: [5], expected: 120 },
+  { input: [3], expected: 6 },
+  { input: [0], expected: 1 }
+],
 */
 
 //  SOLUTION - O(n)

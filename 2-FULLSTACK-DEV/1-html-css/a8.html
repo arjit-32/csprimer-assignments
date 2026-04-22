@@ -4,15 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-   
+    <style>   
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr; /* 3 columns: flexible fractions */
+      grid-template-rows: auto 100px;     /* 2 rows: auto height + fixed 100px */
+      gap: 10px;                          /* spacing between rows/columns */
+      justify-items: center;              /* horizontal alignment of items */
+      align-items: stretch;               /* vertical alignment of items */
+
+      /* Part-2: Using grid-template-areas */
+      grid-template-areas: 
+        "header header sidebar"
+        "nav main sidebar";
+    }
+
+    .item-1 {
+      width: 100%;
+      background-color: rgb(6, 139, 255);
+      grid-column: 1 / 3; /* spans from column 1 to 2 */
+      grid-row: 1;        /* sits in row 1 */
+    }
+
+    .item-2 {
+      width: 100%;
+      background-color: rgb(185, 102, 29);
+      color: aquamarine;
+      grid-column: 3;     /* sits in column 3 */
+      grid-row: 1 / 3;    /* spans rows 1 and 2 */
+    }
+
+    .item-3 {
+      width: 100%;
+      background-color: rgb(26, 206, 16);
+      justify-self: end;  /* overrides container’s justify-items */
+      align-self: center; /* overrides container’s align-items */
+    }
+
+    .item-4{
+      grid-area: main;
+    }
     </style>
 </head>
 <body>
     <h1>Assignment 8: Grid Fundamentals </h1>
     <hr>
     <div class="container">
+        <div class="item-1">1</div>
+        <div class="item-2">2</div>
+        <div class="item-3">3</div>
         
+        <div class="item-4">4</div>
     </div>
 </body>
 </html>

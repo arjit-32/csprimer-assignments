@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assignment-12: Transitions and Transform</title>
+  <style>
+    .card{
+      width: 240px;
+      border: 2px solid rgba(0, 0, 0, 0.219);
+      border-radius: 5px;
+      padding: 10px;
+      transition: box-shadow 0.5s ease; 
+    }
+    .card-header p{
+      margin: 0;
+      font-size: 1.5rem;
+      text-align: center;
+      font-weight: 700;
+    }
+    .card-body img{
+      width: 100%;
+    }
+    .card:hover{
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.219);
+    }
+
+    button{
+      /* Transition - Defines which property changes, how long it takes */
+      transition: transform 2s ease;
+    }
+    button:hover{
+      /* Transform - Applies geometric effects like scale, translate, rotate etc */
+      transform: scale(1.1);
+    }
+
+    .fadein{
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+    .fadein.show{
+      opacity: 1;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>Assignment-12: Transitions and Transform</h1>
+  <hr>
+
+  <div class="card fadein">
+    <div class="card-header">
+      <p>Apple</p>
+    </div>
+    <div class="card-body">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="card-image">
+      <p>This is a image</p>
+    </div>
+    <div class="card-footer">
+      <button>Click me</button>
+    </div>
+  </div>
+  <script>
+  window.addEventListener("load", () => {
+    document.querySelector(".fadein").classList.add("show");
+  });
+</script>
+
+</body>
+</html>

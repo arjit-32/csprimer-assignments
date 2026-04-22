@@ -1,8 +1,14 @@
 /* 
-QUESTION: Write a Java program to find the LCM of two integers.
-EXAMPLES:
-[Input: 12, 18
-Output: 36]
+ID: 9-lcm-numbers
+TITLE: "LCM of Two Numbers",
+
+QUESTION: Write a Java program to compute the least common multiple (LCM) of two numbers using GCD.
+
+TESTS: [
+  { input: [4, 6], expected: 12 },
+  { input: [5, 3], expected: 15 },
+  { input: [7, 2], expected: 14 }
+],
 */
 
 //  SOLUTION - O(min (a,b))

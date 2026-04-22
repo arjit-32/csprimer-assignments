@@ -2,9 +2,7 @@
 
 ---
 
-# 🟢 PHASE 1 — DOM Fundamentals
-
----
+# 🟢 PHASE 1 - DOM Fundamentals
 
 ## Assignment 1: DOM Selection & Basic Manipulation
 🎯 Learn how to read and modify the DOM.
@@ -48,9 +46,7 @@ Tasks:
 
 ---
 
-# 🟡 PHASE 2 — State + UI Sync
-
----
+# 🟡 PHASE 2 - State + UI Sync
 
 ## Assignment 4: Student Manager (Add + Render)
 🎯 Connect JavaScript state to DOM.
@@ -91,9 +87,7 @@ Tasks:
 
 ---
 
-# 🟠 PHASE 3 — Forms & Validation
-
----
+# 🟠 PHASE 3 - Forms & Validation
 
 ## Assignment 7: Form Validation
 🎯 Build real-world form handling.
@@ -125,9 +119,7 @@ Tasks:
 
 ---
 
-# 🟣 PHASE 4 — Filtering, Sorting & UX
-
----
+# 🟣 PHASE 4 - Filtering, Sorting & UX
 
 ## Assignment 9: Search & Filter
 🎯 Live filtering UI.
@@ -162,9 +154,8 @@ Tasks:
 
 ---
 
-# 🔵 PHASE 5 — Fetch & API Integration
+# 🔵 PHASE 5 - Fetch & API Integration
 
----
 
 ## Assignment 12: Fetch API + Rendering
 🎯 Connect external data to DOM.
@@ -193,9 +184,7 @@ Tasks:
 
 ---
 
-# 🟤 PHASE 6 — Small UI Components
-
----
+# 🟤 PHASE 6 - Small UI Components
 
 ## Assignment 14: Modal Component
 🎯 Build reusable UI.
@@ -225,7 +214,7 @@ Tasks:
 
 ---
 
-# 🏁 FINAL PROJECT
+# FINAL PROJECT
 
 ---
 

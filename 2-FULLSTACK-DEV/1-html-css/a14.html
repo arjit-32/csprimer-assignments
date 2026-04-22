@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assignment-14: Positioning</title>
+  <style>
+    .navbar{
+      position: sticky;
+      top: 0;
+      background: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .floating-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #333;
+      color: #fff;
+      border: none;
+      padding: 15px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .tooltip-container{
+      position: relative;
+      display: inline-block;
+      margin: 50px;
+    }
+    
+    .tooltip{
+      display: none;
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #222;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .tooltip-container:hover{
+      .tooltip{
+        display: block;
+      }
+    }
+
+    .card {
+      position: relative;
+      width: 250px;
+      padding: 20px;
+      margin: 50px auto;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgb(253, 185, 185);
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>Assignment-14: Positioning</h1>
+  <hr>
+  <div class="navbar">
+    Sticky Navbar
+  </div>
+
+  <button class="floating-btn">+</button>
+
+  <div class="tooltip-container">
+    Hover me
+    <div class="tooltip">Tooltip text</div>
+  </div>
+
+  <div class="card">
+    <div class="badge">New</div>
+    <h3>Card Title</h3>
+    <p>This is a card with a badge positioned at the top-right corner.</p>
+  </div>
+
+
+</body>
+</html>

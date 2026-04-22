@@ -1,15 +1,13 @@
 # Complete JavaScript Mastery Assignments
 
----
-
-# 🟢 PHASE 1 — Foundations
+# PHASE 1 - Foundations
 
 ---
 
 ## Assignment 1: Variables, Types & Operators  
 🎯 Understand JS primitives and coercion.
 
-### Tasks:
+Tasks:
 1. Declare variables using `var`, `let`, `const`.
 2. Create values for all primitive types:
    - string
@@ -33,7 +31,7 @@
 ## Assignment 2: Functions & Scope Basics  
 🎯 Learn function forms and scope rules.
 
-### Tasks:
+Tasks:
 1. Write:
    - function declaration
    - function expression
@@ -50,7 +48,7 @@
 ## Assignment 3: Control Flow & Loops  
 🎯 Master flow control.
 
-### Tasks:
+Tasks:
 1. Create a grading function using if/else.
 2. Use switch for day-of-week logic.
 3. Use:
@@ -59,21 +57,20 @@
    - do...while
    - for...of
    - for...in
-4. Demonstrate break & continue.
 
 ---
 
 ## Assignment 4: Arrays Deep Dive  
 🎯 Work with collections properly.
 
-### Tasks:
-1. Manually implement using loops:
+Tasks:
+1. Manually implement:
    - map
    - filter
    - reduce
 2. Then use built-in methods.
 3. Demonstrate:
-   - sparse arrays
+   - sparse arrays 
    - mutation during iteration
    - shallow copy issues
 4. Compare:
@@ -84,7 +81,7 @@
 ## Assignment 5: Objects & References  
 🎯 Understand object behavior in memory.
 
-### Tasks:
+Tasks:
 1. Create nested object.
 2. Demonstrate reference copying behavior.
 3. Implement:
@@ -98,14 +95,12 @@
 
 ---
 
-# 🟡 PHASE 2 — Intermediate JavaScript
-
----
+# 🟡 PHASE 2 - Intermediate JavaScript
 
 ## Assignment 6: Destructuring, Spread & Rest  
 🎯 Modern syntax mastery.
 
-### Tasks:
+Tasks:
 1. Destructure nested objects.
 2. Combine arrays using spread.
 3. Write function using rest parameters.
@@ -117,22 +112,21 @@
 ## Assignment 7: Closures & Lexical Scope  
 🎯 Deep understanding of closures.
 
-### Tasks:
+Tasks:
 1. Create counter with private variable.
 2. Create bank account module:
    - deposit
    - withdraw
    - getBalance
-3. Create function factory.
-4. Explain why closure retains memory.
-5. Demonstrate memory leak scenario with closure.
+3. Explain why closure retains memory.
+4. Demonstrate memory leak scenario with closure.
 
 ---
 
 ## Assignment 8: `this`, bind, call, apply  
 🎯 Master dynamic context.
 
-### Tasks:
+Tasks:
 1. Write object method using `this`.
 2. Extract method → break `this` → fix using `.bind()`.
 3. Use `.call()` and `.apply()`.
@@ -144,7 +138,7 @@
 ## Assignment 9: Prototype & Inheritance  
 🎯 Understand JS object model.
 
-### Tasks:
+Tasks:
 1. Create constructor function.
 2. Add methods via prototype.
 3. Inherit using `Object.create`.
@@ -157,7 +151,7 @@
 ## Assignment 10: Classes (Modern OOP)  
 🎯 ES6 class syntax.
 
-### Tasks:
+Tasks:
 1. Rewrite prototype example using class.
 2. Add:
    - getter
@@ -168,14 +162,12 @@
 
 ---
 
-# 🟠 PHASE 3 — Execution & Asynchronous JavaScript
-
----
+# 🟠 PHASE 3 - Execution & Asynchronous JavaScript
 
 ## Assignment 11: Execution Context & Hoisting  
 🎯 Understand how JS runs code.
 
-### Tasks:
+Tasks:
 1. Demonstrate hoisting:
    - var
    - let
@@ -190,7 +182,7 @@
 ## Assignment 12: Event Loop Basics  
 🎯 Microtask vs Macrotask.
 
-### Tasks:
+Tasks:
 1. Write code using:
    - setTimeout
    - Promise
@@ -204,7 +196,7 @@
 ## Assignment 13: Promises  
 🎯 Async fundamentals.
 
-### Tasks:
+Tasks:
 1. Create Promise that resolves after delay.
 2. Chain multiple `.then()` calls.
 3. Handle `.catch()`.
@@ -216,7 +208,7 @@
 ## Assignment 14: Async/Await  
 🎯 Modern async handling.
 
-### Tasks:
+Tasks:
 1. Convert Promise-based code to async/await.
 2. Demonstrate sequential vs parallel execution.
 3. Handle errors with try/catch.
@@ -227,19 +219,17 @@
 
 # 🟣 PHASE 4 — Polyfills & Utility Building
 
----
-
 ## Assignment 15: Array Polyfills  
 🎯 Recreate built-ins.
 
-### Implement:
+Implement:
 - Array.prototype.myMap
 - myFilter
 - myReduce
 - myForEach
 - myFind
 
-### Rules:
+Rules:
 - Use prototype.
 - Do not use original methods internally.
 - Handle edge cases (empty array, missing callback).
@@ -249,12 +239,12 @@
 ## Assignment 16: Function Polyfills  
 🎯 Understand internal mechanics.
 
-### Implement:
+Implement:
 - Function.prototype.myCall
 - myApply
 - myBind
 
-### Requirements:
+Requirements:
 - Handle arguments properly.
 - Preserve return values.
 - Handle null/undefined context.
@@ -265,12 +255,12 @@
 ## Assignment 17: Promise Utilities  
 🎯 Practical async helpers.
 
-### Implement:
+Implement:
 - custom Promise.all
 - custom Promise.race
 - custom Promise.allSettled
 
-### Requirements:
+Requirements:
 - Handle rejections correctly.
 - Preserve order of results.
 - Handle non-promise values.
@@ -280,7 +270,7 @@
 ## Assignment 18: Deep Clone (Advanced)  
 🎯 Memory & references mastery.
 
-### Create deepClone that handles:
+Create deepClone that handles:
 - nested objects
 - arrays
 - Date
@@ -293,7 +283,7 @@
 ## Assignment 19: Debounce & Throttle  
 🎯 Real-world optimization.
 
-### Implement:
+Implement:
 - debounce:
   - leading option
   - trailing option
@@ -302,19 +292,17 @@
   - leading option
   - trailing option
 
-### Test:
+Test:
 Simulate rapid function calls.
 
 ---
 
-# 🔴 PHASE 5 — Advanced Language Features
-
----
+# 🔴 PHASE 5 - Advanced Language Features
 
 ## Assignment 20: Map, Set & WeakMap  
 🎯 Non-primitive collections.
 
-### Tasks:
+Tasks:
 1. Use Map for caching.
 2. Remove duplicates using Set.
 3. Demonstrate WeakMap metadata use case.
@@ -325,7 +313,7 @@ Simulate rapid function calls.
 ## Assignment 21: Generators & Iterators  
 🎯 Lazy evaluation.
 
-### Tasks:
+Tasks:
 1. Create custom iterator for range.
 2. Fibonacci generator.
 3. Infinite sequence generator.
@@ -337,7 +325,7 @@ Simulate rapid function calls.
 ## Assignment 22: Symbols & Well-Known Symbols  
 🎯 Hidden properties & internals.
 
-### Tasks:
+Tasks:
 1. Create Symbol properties.
 2. Implement custom iterator using Symbol.iterator.
 3. Override Symbol.toStringTag.
@@ -349,13 +337,13 @@ Simulate rapid function calls.
 ## Assignment 23: Functional Programming Utilities  
 🎯 Higher-order thinking.
 
-### Implement:
+Implement:
 - compose
 - pipe
 - curry
 - partial
 
-### Bonus:
+Bonus:
 - Implement once(fn)
 - Memoization utility
 
@@ -364,7 +352,7 @@ Simulate rapid function calls.
 ## Assignment 24: Error Handling Patterns  
 🎯 Robust code writing.
 
-### Tasks:
+Tasks:
 1. Create custom error classes.
 2. Normalize error format:
    {

@@ -1,10 +1,14 @@
 /* 
-QUESTION: Write a Java program to compute the factorial of large numbers modulo 10^9+7.
-EXAMPLES:
-[Input: 5
-Output: 120]
-[Input: 100000
-Output: (result modulo 10^9+7)]
+ID: 6-large-factorial
+TITLE: "Factorial Modulo 1e9+7",
+
+QUESTION: Write a Java program to compute the factorial of a number modulo 1000000007.
+
+TESTS: [
+  { input: [5], expected: 120 },
+  { input: [10], expected: 3628800 },
+  { input: [1], expected: 1 }
+],
 */
 
 

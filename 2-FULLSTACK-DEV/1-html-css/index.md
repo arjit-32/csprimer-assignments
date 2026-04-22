@@ -120,10 +120,8 @@ Tasks ->
 1. Create a grid with:  
    - 3 columns  
    - auto rows  
-2. Add:  
+2. Enhance grid with:  
    - `grid-template-areas`  
-   - `gap`  
-3. Build a page layout (header, sidebar, content, footer).  
 
 ---
 
@@ -133,7 +131,7 @@ _Goal: Build mobile-first responsive UI._
 Tasks ->  
 1. Convert grid layout into mobile layout.  
 2. Use at least 3 breakpoints.  
-3. Create a responsive navbar that collapses into a hamburger menu (HTML only, no JS yet).  
+3. Create a responsive navbar that collapses into a hamburger menu (HTML only, no JS).  
 
 ---
 
@@ -142,19 +140,16 @@ _Goal: Learn maintainable styling._
 
 Tasks ->  
 1. Create light and dark themes using:  
-   - `:root { --color-primary: ... }`  
-2. Switch theme by toggling a class on `<body>` (manual in HTML for now).  
+   - `:root { --color-bg: ... }`  
+2. Switch theme by toggling a class on `<body>` 
 
 ---
 
-## Assignment-11: Icon Fonts, SVG, and Images  
+## Assignment-11: Icon and SVG  
 _Goal: Master graphics on the web._  
 
 Tasks ->  
-1. Use:  
-   - SVG inline icon  
-   - SVG `<use>`  
-   - Icon font (FontAwesome or custom)  
+1. Use Icon library (FontAwesome or other)  
 2. Create an SVG logo.  
 
 ---
@@ -163,15 +158,11 @@ Tasks ->
 _Goal: Animate elements smoothly._  
 
 Tasks ->  
-1. Animate:  
+Animate:  
    - button hover → scale up  
-   - card hover → shadow + lift  
+   - card hover → shadow   
    - fade-in transitions  
-2. Use:  
-   - `transition`  
-   - `transform`  
 
----
 
 ## Assignment-13: CSS Keyframe Animations  
 _Goal: Build pure CSS animations._  
@@ -187,7 +178,7 @@ Tasks ->
 
 ---
 
-## Assignment-14: Positioning (relative, absolute, fixed, sticky)  
+## Assignment-14: Positioning
 _Goal: Control element placement._  
 
 Tasks ->  
@@ -199,7 +190,7 @@ Tasks ->
 
 ---
 
-## Assignment-15: Pseudo-elements & Advanced Selectors  
+## Assignment-15: Advanced Selectors  
 _Goal: Use fine-grained styling._  
 
 Tasks ->  
@@ -211,7 +202,7 @@ Tasks ->
 
 ---
 
-## Assignment-16: Forms UI & Custom Inputs  
+## Assignment-16: Forms UI
 _Goal: Make beautiful, accessible forms._  
 
 Tasks ->  
@@ -235,19 +226,4 @@ Tasks ->
 
 ---
 
-## Assignment-18: Web Accessibility (a11y)  
-_Goal: Follow accessibility best practices._  
-
-Tasks ->  
-1. Add:  
-   - ARIA roles  
-   - labels  
-   - alt text  
-   - keyboard navigation  
-2. Make a fully accessible:  
-   - modal  
-   - dropdown  
-   - navigation menu  
-
----
 

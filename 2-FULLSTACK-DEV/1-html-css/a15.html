@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assignment-15: Advanced Selectors</title>
+  <style>
+
+    .banner{
+      margin-left: 20px;
+      position: relative;
+      display: inline-block;
+      background: #fdfdfd;
+      font-family: sans-serif;
+      font-weight: bold;
+      border: 2px solid teal;
+      border-radius: 8px;
+
+    }
+    .banner::before{
+       content: "";
+      position: absolute;
+      left: -15px;
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+      width: 12px;
+      height: 12px;
+      background: teal;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 50%;
+      margin: 20px auto;
+      font-family: sans-serif;
+      text-align: center;
+    }
+    tr:nth-child(odd) {
+      background-color: #f9f9f9;
+    }
+    tr:nth-child(even) {
+      background-color: #e0f7fa;
+    }
+    td:first-child {
+      font-weight: bold;
+      color: teal;
+    }
+    tr:hover {
+      background-color: #ffe082;
+      cursor: pointer;
+    }
+
+
+    blockquote::before{
+      content: "\“";
+      font-size: 3em;
+      color: rgb(255, 0, 0);
+    }
+    blockquote::after {
+      content: "\”";
+      font-size: 3em;
+      color: rgb(255, 0, 0);
+    }
+  </style>
+</head>
+<body>
+  <h1>Assignment-15: Advanced Selectors</h1>
+  <hr>
+
+  <h2 class="banner">Welcome Section</h2>
+
+
+  <table>
+    <tr><td>Row 1</td><td>Arjit</td></tr>
+    <tr><td>Row 2</td><td>Farjit</td></tr>
+    <tr><td>Row 3</td><td>Harjit</td></tr>
+    <tr><td>Row 4</td><td>Sirjeet</td></tr>
+  </table>
+
+  <blockquote>
+    CSS gives us the power to style content with precision and creativity.
+  </blockquote>
+
+</body>
+</html>

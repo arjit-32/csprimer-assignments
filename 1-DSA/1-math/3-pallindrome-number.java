@@ -1,10 +1,14 @@
 /* 
-QUESTION: Write a Java program to check if a given integer is a palindrome.
-EXAMPLES:
-[Input: 121
-Output: true]
-[Input: 123
-Output: false]
+ID: 3-palindrome-number
+TITLE: "Check if Number is Palindrome",
+
+QUESTION: Write a Java program to check whether a given integer is a palindrome.
+
+TESTS: [
+  { input: [121], expected: true },
+  { input: [123], expected: false },
+  { input: [7], expected: true }
+],
 */
 
 //  SOLUTION - O(log{10}(n))
