@@ -170,12 +170,10 @@ Tasks:
 Tasks:
 1. Demonstrate hoisting:
    - var
-   - let
+   - let - Use try/catch to show ReferenceError
    - const
    - function declaration
-2. Predict output before running.
-3. Show Temporal Dead Zone behavior.
-4. Demonstrate scope chain lookup.
+2. Demonstrate scope chain lookup.
 
 ---
 
@@ -187,9 +185,10 @@ Tasks:
    - setTimeout
    - Promise
    - queueMicrotask
-2. Predict execution order.
+2. Predict execution order of above.
 3. Explain microtask priority.
 4. Demonstrate nested microtasks.
+5. Relate this to practical API calls, DB calls etc.
 
 ---
 
@@ -200,8 +199,8 @@ Tasks:
 1. Create Promise that resolves after delay.
 2. Chain multiple `.then()` calls.
 3. Handle `.catch()`.
-4. Demonstrate error bubbling.
-5. Show Promise.resolve and Promise.reject usage.
+4. Show Promise.resolve and Promise.reject usage.
+5. Demonstrate error bubbling
 
 ---
 
@@ -217,7 +216,7 @@ Tasks:
 
 ---
 
-# 🟣 PHASE 4 — Polyfills & Utility Building
+# 🟣 PHASE 4 - Polyfills & Utility Building
 
 ## Assignment 15: Array Polyfills  
 🎯 Recreate built-ins.
