@@ -228,11 +228,6 @@ Implement:
 - myForEach
 - myFind
 
-Rules:
-- Use prototype.
-- Do not use original methods internally.
-- Handle edge cases (empty array, missing callback).
-
 ---
 
 ## Assignment 16: Function Polyfills  
@@ -242,12 +237,6 @@ Implement:
 - Function.prototype.myCall
 - myApply
 - myBind
-
-Requirements:
-- Handle arguments properly.
-- Preserve return values.
-- Handle null/undefined context.
-- Support partial application in bind.
 
 ---
 
@@ -259,10 +248,6 @@ Implement:
 - custom Promise.race
 - custom Promise.allSettled
 
-Requirements:
-- Handle rejections correctly.
-- Preserve order of results.
-- Handle non-promise values.
 
 ---
 
@@ -275,7 +260,7 @@ Create deepClone that handles:
 - Date
 - RegExp
 - circular references (using WeakMap)
-- Map / Set (bonus)
+- Map / Set 
 
 ---
 
@@ -284,6 +269,7 @@ Create deepClone that handles:
 
 Implement:
 - debounce:
+  - simple
   - leading option
   - trailing option
   - cancel()
