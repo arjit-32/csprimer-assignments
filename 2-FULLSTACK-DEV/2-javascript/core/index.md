@@ -241,7 +241,7 @@ Implement:
 ---
 
 ## Assignment 17: Promise Utilities  
-🎯 Practical async helpers.
+🎯 Practical async deep dives.
 
 Implement:
 - custom Promise.all
@@ -268,17 +268,8 @@ Create deepClone that handles:
 🎯 Real-world optimization.
 
 Implement:
-- debounce:
-  - simple
-  - leading option
-  - trailing option
-  - cancel()
-- throttle:
-  - leading option
-  - trailing option
-
-Test:
-Simulate rapid function calls.
+- debounce: simple and with leading option
+- throttle
 
 ---
 
@@ -300,10 +291,7 @@ Tasks:
 
 Tasks:
 1. Create custom iterator for range.
-2. Fibonacci generator.
-3. Infinite sequence generator.
-4. Use for...of with custom iterator.
-5. Manually iterate using iterator.next().
+2. Infinite sequence generator.
 
 ---
 
@@ -314,8 +302,6 @@ Tasks:
 1. Create Symbol properties.
 2. Implement custom iterator using Symbol.iterator.
 3. Override Symbol.toStringTag.
-4. Explore Symbol.hasInstance.
-5. Demonstrate non-enumerable symbol behavior.
 
 ---
 
@@ -323,14 +309,8 @@ Tasks:
 🎯 Higher-order thinking.
 
 Implement:
-- compose
 - pipe
 - curry
-- partial
-
-Bonus:
-- Implement once(fn)
-- Memoization utility
 
 ---
 
