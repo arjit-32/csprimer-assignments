@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .highlight{
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="title">Hello World</div>
+    <p class="info">paragraph</p>
+    <p class="info">Another paragraph.</p>
+    <p class="test">This is Awesome</p>
+    <button id="toggleBtn">Toggle text</button>
+
+    <button id="colorBtn">Change Background</button>
+
+
+</body>
+<script>
+    // Selecting elements
+    const title = document.getElementById("title");  // Select by ID
+    console.log(title);
+
+    const firstInfo = document.querySelector(".info");  // Select first matching element
+    console.log(firstInfo);
+
+    const allInfo = document.querySelectorAll(".info"); // Select all matching elements (NodeList)
+    console.log(allInfo);
+    allInfo.forEach(el => console.log(el.textContent));
+
+
+    // Modifying Elements
+    setTimeout(()=>{
+           title.textContent = "Welcome to DOM!";
+    }, 1000);
+    firstInfo.innerHTML = "<strong>Bold Text</strong>";
+    document.getElementsByClassName('test')[0].setAttribute("title", "Tooltip text");
+    firstInfo.style.color = "blue";
+
+    // Button to Change Background Color
+    const btn = document.getElementById("colorBtn");
+    btn.addEventListener("click", () => {
+        // console.log("fired");
+        document.body.style.backgroundColor = "lightgreen";
+    });
+
+    // Toggle a class using classList
+    const test = document.querySelector('.test');
+    const togglebtn = document.getElementById('toggleBtn');
+
+    togglebtn.addEventListener("click", ()=>{
+        test.classList.toggle("highlight");
+    })
+
+
+
+</script>
+</html>

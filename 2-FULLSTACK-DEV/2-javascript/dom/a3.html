@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <button id="addBtn">Add Item</button>
+  <ul id="myList"></ul>
+  <button id="clearBtn">Clear List</button>
+</body>
+<script>
+  // Creating list item
+  let i=0;
+  const list = document.getElementById("myList");
+  const addBtn = document.getElementById("addBtn");
+  addBtn.addEventListener("click", () => {
+    const newItem = document.createElement("li"); // create list item
+    newItem.textContent = "New Item " + i++;
+
+    const delBtn = document.createElement("button"); // create delete button
+    delBtn.textContent = "Delete";
+    delBtn.addEventListener("click", ()=>{
+      newItem.remove();
+    })
+    newItem.appendChild(delBtn); // add button to item
+    list.appendChild(newItem);   // add newItem to list
+  });
+
+  const clearBtn = document.getElementById("clearBtn");
+  clearBtn.addEventListener("click", () => {
+    list.innerHTML = ""; // clears all items
+  });
+</script>
+</html>

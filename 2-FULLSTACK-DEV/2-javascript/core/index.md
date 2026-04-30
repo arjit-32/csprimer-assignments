@@ -319,14 +319,13 @@ Implement:
 
 Tasks:
 1. Create custom error classes.
-2. Normalize error format:
+2. Normalize error format and Handle failue gracefully in a Async function:
    {
      success: false,
      message: "",
      stack: ""
    }
-3. Global async wrapper.
-4. Graceful failure handling.
-5. Demonstrate error propagation across async chain.
+3. Demonstrate error propagation across async chain.
+4. Global Async Wrapper
 
 ---

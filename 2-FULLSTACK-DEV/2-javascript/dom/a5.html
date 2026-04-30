@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <h1>Student Manager</h1>
+  <form id="inputForm">
+      <input type="text" id="studentName" placeholder="Enter Student Name" required>
+      <input type="submit" value="Submit">
+  </form>
+  <ul id="studentList"></ul>
+
+</body>
+<script>
+  let students=[];
+
+  const form = document.getElementById("inputForm");
+  const input = document.getElementById("studentName");
+
+  form.addEventListener("submit", (event) => {
+  event.preventDefault(); // prevent page reload
+  const name = input.value.trim();
+  if (name) {
+    students.push(name);   // update state
+    renderStudents();      // re-render
+    input.value = "";      // clear input
+  }
+  });
+
+  function renderStudents() {
+  const list = document.getElementById("studentList");
+  list.innerHTML = ""; // clear old content
+
+  students.forEach((student, index) => {
+    const li = document.createElement("li");
+    
+    const span = document.createElement("span");
+    span.textContent = student;
+
+    const editBtn = document.createElement("button");
+    editBtn.textContent = "Edit";
+
+    const delBtn = document.createElement("button");
+    delBtn.textContent = "Delete";
+
+    li.appendChild(span);
+    li.appendChild(editBtn);
+    li.appendChild(delBtn);
+    list.appendChild(li);
+
+    // Delete logic
+    delBtn.addEventListener("click", () => {
+      students.splice(index, 1);
+      renderStudents();
+    });
+
+    // Edit logic
+    editBtn.addEventListener("click", () => {
+      startEdit(index, span);
+    });
+  });
+}
+
+function startEdit(index, span) {
+  const input = document.createElement("input");
+  input.type = "text";
+  input.value = students[index];
+
+  // Replace span with input
+  span.replaceWith(input);
+
+  // Focus immediately
+  input.focus();
+
+  // Save on Enter
+  input.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      saveEdit(index, input.value);
+    }
+  });
+}
+
+function saveEdit(index, newValue) {
+  students[index] = newValue.trim(); // update array
+  renderStudents();                  // re-render cleanly
+}
+
+
+
+
+</script>
+</html>

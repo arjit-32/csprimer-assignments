@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    #coords{
+        width: 500px;
+        height: 100px;
+        background: #38c790;
+     }
+
+    #section{
+        width: 50px;
+        height: 50px;
+        border: 2px solid black;
+     }
+
+    #grandParent{
+        padding:40px;
+        background:rgb(0, 27, 36);
+     }
+    
+    #parent{
+        padding:20px;
+        background:lightblue;
+     }
+    </style>
+</head>
+<body>
+
+    <button id="clickBtn">Click Me</button> <br>
+    <input type="text" id="nameInput" placeholder="Type your name">
+    <p id="output"></p>
+    <select id="fruitSelect">
+        <option>Apple</option>
+        <option>Banana</option>
+        <option>Cherry</option>
+    </select>
+    <p id="chosenFruit"></p>
+
+
+    <hr>
+    <div id="coords">Move your mouse!</div>
+
+
+    <hr>
+    <div id="section">section.</div>
+    <button id="toggleSectionBtn">Toggle Section</button>
+
+    <hr>
+    <form id="myForm" action="/post.html">
+        <input type="text" placeholder="Enter something">
+        <button type="submit">Submit</button>
+    </form>
+
+    <hr>
+    <div id="grandParent">
+        <div id="parent">
+            Parent Div
+            <button id="childBtn">Child Button</button>
+        </div>
+    </div>
+</body>
+<script>
+  // Add events  
+  // click event
+  const clickBtn = document.getElementById("clickBtn");
+  clickBtn.addEventListener("click", () => {
+    alert("Button was clicked!");
+  });
+  // input event
+  const nameInput = document.getElementById("nameInput");
+  const output = document.getElementById("output");
+  nameInput.addEventListener("input", () => {
+    output.textContent = `You typed: ${nameInput.value}`;
+  });
+  // change event
+  const fruitSelect = document.getElementById("fruitSelect");
+  const chosenFruit = document.getElementById("chosenFruit");
+  fruitSelect.addEventListener("change", () => {
+    chosenFruit.textContent = `You selected: ${fruitSelect.value}`;
+  });
+
+
+  //  Mouse coordinates
+  const coords = document.getElementById("coords");
+  coords.addEventListener('mousemove', (event)=>{
+    console.log("x="+event.x + ", y="+event.y);
+  })
+
+
+  // Toggle visibility
+  const section = document.getElementById("section");
+  const toggleSectionBtn = document.getElementById("toggleSectionBtn");
+  toggleSectionBtn.addEventListener("click", () => {
+    section.style.display = section.style.display === "none" ? "block" : "none";
+  });
+
+
+  // prevent default form submission
+  const myForm = document.getElementById('myForm');
+    myForm.addEventListener("submit", (event) => {
+        event.preventDefault(); // stops page reload
+        console.log("Form submission prevented!");
+  });
+
+  // Stop event propogation
+  const grandParent = document.getElementById("grandParent");
+  const parent = document.getElementById("parent");
+  const childBtn = document.getElementById("childBtn");
+
+  grandParent.addEventListener("click", () => {
+    console.log("grandParent clicked!");
+  });
+
+
+  parent.addEventListener("click", () => {
+    // event.stopPropagation(); // prevents grandParent from firing
+    console.log("Parent clicked!");
+  });
+
+  childBtn.addEventListener("click", (event) => {
+    event.stopPropagation(); // prevents parent from firing
+    console.log("Child button clicked!");
+  });
+
+
+
+</script>
+</html>

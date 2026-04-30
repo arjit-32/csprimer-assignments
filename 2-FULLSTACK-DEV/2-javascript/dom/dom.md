@@ -11,14 +11,14 @@ Tasks:
 1. Select elements using:
    - getElementById
    - querySelector
-   - querySelectorAll
+   - querySelectorAll -> Traverse it and show text element
 2. Modify:
-   - textContent
+   - textContent -> after 1 second
    - innerHTML
    - attributes
    - styles
 3. Add a button that changes background color.
-4. Toggle a class using classList.
+4. Toggle a class to highlight text.
 
 ---
 
@@ -38,11 +38,9 @@ Tasks:
 🎯 Build UI dynamically.
 
 Tasks:
-1. Create new list item using JS.
-2. Append to list.
-3. Add delete button to each item.
-4. Remove item when delete is clicked.
-5. Clear entire list with one button.
+1. Add item button to dynamically add new list item.
+2. Add delete button to each item.
+3. Clear entire list with one button.
 
 ---
 
@@ -56,25 +54,22 @@ Tasks:
 2. Render array to DOM.
 3. Add student via form.
 4. Re-render list after changes.
-5. Separate:
-   - render logic
-   - state logic
+5. Separate render logic to state logic
 
 ---
 
-## Assignment 5: Edit & Update Items
-🎯 Modify UI dynamically.
+## Assignment 5: Student Manager (Edit & Update)
+🎯 Modify UI dynamically. 
 
-Tasks:
+Tasks: Related to assignment 4
 1. Add Edit button.
 2. Convert text to input field.
 3. Save on Enter.
-4. Update array.
-5. Re-render cleanly.
+4. Re-render cleanly.
 
 ---
 
-## Assignment 6: Event Delegation
+## Assignment 6: Student Manager (Event Delegation)
 🎯 Efficient event handling.
 
 Tasks:
@@ -87,20 +82,16 @@ Tasks:
 
 ---
 
-# 🟠 PHASE 3 - Forms & Validation
+# 🟠 PHASE 3 - Forms and Storage
 
 ## Assignment 7: Form Validation
 🎯 Build real-world form handling.
 
 Tasks:
 1. Create registration form:
-   - name
-   - email
-   - password
-2. Validate:
-   - required
-   - min length
-   - valid email format
+   - name, email, password
+2. Validate with JS
+   - required, min length, valid email format
 3. Show error messages below fields.
 4. Prevent submission if invalid.
 5. Clear errors on valid input.
@@ -213,30 +204,3 @@ Tasks:
 4. Add smooth transition.
 
 ---
-
-# FINAL PROJECT
-
----
-
-## Assignment 16: Student Dashboard (Complete Frontend App)
-
-🎯 Combine everything.
-
-Features:
-- Add / Edit / Delete students
-- Search
-- Sort
-- Theme toggle
-- Modal form
-- Persist in localStorage
-- Fetch additional demo users
-- Loading + empty states
-- Event delegation
-- Clean state separation
-- Responsive layout
-
-Requirements:
-- No global spaghetti code
-- Separate render functions
-- Avoid duplicate DOM manipulation
-- Keep state as single source of truth

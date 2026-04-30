@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <h1>Student Manager</h1>
+  <form id="inputForm">
+      <input type="text" id="studentName" placeholder="Enter Student Name" required>
+      <input type="submit" value="Submit">
+  </form>
+  <ul id="studentList"></ul>
+
+</body>
+<script>
+  let students=[];
+
+  const form = document.getElementById("inputForm");
+  const input = document.getElementById("studentName");
+
+  form.addEventListener("submit", (event) => {
+  event.preventDefault(); // prevent page reload
+  const name = input.value.trim();
+  if (name) {
+    students.push(name);   // update state
+    renderStudents();      // re-render
+    input.value = "";      // clear input
+  }
+  });
+
+  function renderStudents() {
+  console.log("render fired");
+  const list = document.getElementById("studentList");
+  list.innerHTML = ""; // clear old content
+
+  students.forEach((student, index) => {
+    const li = document.createElement("li");
+    li.textContent = student;
+
+    list.appendChild(li);
+  });
+}
+
+
+
+
+</script>
+</html>

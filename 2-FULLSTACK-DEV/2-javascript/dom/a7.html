@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="registrationForm">
+    <label>
+        Name:
+        <input type="text" id="name" />
+        <small class="error"></small>
+    </label>
+    <br />
+
+    <label>
+        Email:
+        <input type="email" id="email" />
+        <small class="error"></small>
+    </label>
+    <br />
+
+    <label>
+        Password:
+        <input type="password" id="password" />
+        <small class="error"></small>
+    </label>
+    <br />
+
+    <button type="submit">Register</button>
+    </form>
+</body>
+<script>
+    const form = document.getElementById("registrationForm");
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+
+
+    function validateName(name) {
+        if (name.trim() === "") {
+            return "Name is required";
+        }
+        return "";
+    }
+
+    function validateEmail(email) {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // simple regex
+        if (email.trim() === "") {
+            return "Email is required";
+        } else if (!emailPattern.test(email)) {
+            return "Invalid email format";
+        }
+        return "";
+    }
+
+    function validatePassword(password) {
+        if (password.trim() === "") {
+            return "Password is required";
+        } else if (password.length < 6) {
+            return "Password must be at least 6 characters";
+        }
+        return "";
+    }
+
+
+    function showError(inputElement, message) {
+        const errorElement = inputElement.nextElementSibling; // the <small> tag
+        errorElement.textContent = message;
+        if (message) {
+            errorElement.style.color = "red";
+        } else {
+            errorElement.textContent = "";
+        }
+    }
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault(); // stop form from submitting
+
+        const nameError = validateName(nameInput.value);
+        const emailError = validateEmail(emailInput.value);
+        const passwordError = validatePassword(passwordInput.value);
+
+        showError(nameInput, nameError);
+        showError(emailInput, emailError);
+        showError(passwordInput, passwordError);
+
+        // If no errors, allow submission
+        if (!nameError && !emailError && !passwordError) {
+            alert("Form submitted successfully!");
+            form.reset(); // clear form
+        }
+    });
+
+
+    [nameInput, emailInput, passwordInput].forEach((input) => {
+        input.addEventListener("input", () => {
+            let errorMessage = "";
+            if (input === nameInput) errorMessage = validateName(input.value);
+            if (input === emailInput) errorMessage = validateEmail(input.value);
+            if (input === passwordInput) errorMessage = validatePassword(input.value);
+
+            showError(input, errorMessage);
+        });
+    });
+
+</script>
+</html>
