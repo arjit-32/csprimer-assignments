@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Search</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    #no-results { display: none; color: red; margin-top: 10px; }
+    .student { margin: 5px 0; }
+  </style>
+</head>
+<body>
+  <h2>Student List</h2>
+  <input type="text" id="searchInput" placeholder="Search students by name...">
+
+  <ul id="studentList">
+    <li class="student">Alice Johnson</li>
+    <li class="student">Bob Smith</li>
+    <li class="student">Charlie Brown</li>
+    <li class="student">Diana Prince</li>
+    <li class="student">Ethan Hunt</li>
+  </ul>
+
+  <p id="no-results">No results found</p>
+
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const students = document.querySelectorAll('.student');
+    const noResults = document.getElementById('no-results');
+
+    searchInput.addEventListener('input', function() {
+      const query = this.value.toLowerCase();
+      let matches = 0;
+
+      students.forEach(student => {
+        if (student.textContent.toLowerCase().includes(query)) {
+          student.style.display = '';
+          matches++;
+        } else {
+          student.style.display = 'none';
+        }
+      });
+
+      noResults.style.display = matches === 0 ? 'block' : 'none';
+    });
+  </script>
+</body>
+</html>

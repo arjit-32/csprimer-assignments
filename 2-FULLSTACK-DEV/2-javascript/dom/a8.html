@@ -6,9 +6,173 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <form id="registrationForm">
+    <label>
+        Name:
+        <input type="text" id="name" />
+        <small class="error"></small>
+    </label>
+    <br />
+
+    <label>
+        Email:
+        <input type="email" id="email" />
+        <small class="error"></small>
+    </label>
+    <br />
+
+    <label>
+        Password:
+        <input type="password" id="password" />
+        <small class="error"></small>
+    </label>
+    <br />
+
+     <label>
+      Language Preference:
+      <select id="language">
+        <option value="en">English</option>
+        <option value="hi">Hindi</option>
+        <option value="sa">Sanskrit</option>
+      </select>
+    </label>
+    <br />
+
+    <button type="submit">Register</button>
+    </form>
+
+    <button id="resetAll">Reset All Storage</button>
+
+    <h3>Stored Accounts (IndexedDB)</h3>
+    <ul id="accountsList"></ul>
+
 </body>
 <script>
-   
+    console.log(document.cookie);
+    const form = document.getElementById("registrationForm");
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const languageSelect = document.getElementById("language");
+    const accountsList = document.getElementById("accountsList");
+    const resetBtn = document.getElementById("resetAll");
+
+
+    function setCookie(name, value, days){
+        const d = new Date();
+        d.setTime(d.getTime() + (days*24*60*60*1000));
+        document.cookie = `${name}=${value};expires=${d.toUTCString()};path=/`;
+    }
+    function getCookie(name){
+        const cookies = document.cookie.split("; ");
+        for(let c of cookies){
+            const [key, val] = c.split("=");
+            if(key === name) return val;
+        }
+        return "";
+    }
+
+    const savedLang = getCookie("language");
+    if(savedLang) languageSelect.value = savedLang;
+    languageSelect.addEventListener("change", () => {
+        // console.log("triggered");
+        setCookie("language", languageSelect.value, 7);
+    });
+
+
+
+    // Reload from local storage
+    if(localStorage.getItem("name")){
+        nameInput.value = localStorage.getItem("name");
+    }
+
+    // Reload from session storage
+    if(sessionStorage.getItem("email")){
+        emailInput.value = sessionStorage.getItem("email");
+    }
+    // Save email in session storage
+    emailInput.addEventListener("input", () => {
+        sessionStorage.setItem("email", emailInput.value);
+    });
+
+
+
+    // Validations
+    function validateName(name) {
+        if (name.trim() === "") {
+            return "Name is required";
+        }
+        return "";
+    }
+
+    function validateEmail(email) {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // simple regex
+        if (email.trim() === "") {
+            return "Email is required";
+        } else if (!emailPattern.test(email)) {
+            return "Invalid email format";
+        }
+        return "";
+    }
+
+    function validatePassword(password) {
+        if (password.trim() === "") {
+            return "Password is required";
+        } else if (password.length < 6) {
+            return "Password must be at least 6 characters";
+        }
+        return "";
+    }
+
+
+    function showError(inputElement, message) {
+        // console.log(inputElement);
+        const errorElement = inputElement.nextElementSibling; // the <small> tag
+        errorElement.textContent = message;
+        if (message) {
+            errorElement.style.color = "red";
+        } else {
+            errorElement.textContent = "";
+        }
+    }
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault(); // stop form from submitting
+
+        const nameError = validateName(nameInput.value);
+        const emailError = validateEmail(emailInput.value);
+        const passwordError = validatePassword(passwordInput.value);
+
+        showError(nameInput, nameError);
+        showError(emailInput, emailError);
+        showError(passwordInput, passwordError);
+
+        // If no errors, allow submission
+        if (!nameError && !emailError && !passwordError) {
+            localStorage.setItem("name", nameInput.value); // save name in local storage 
+            form.reset(); // clear form
+        }
+    });
+
+    resetBtn.addEventListener("click", () => {
+        localStorage.clear();
+        sessionStorage.clear();
+        document.cookie.split(";").forEach(c => {
+            document.cookie = c.replace(/^ +/, "") 
+                                .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+        });
+    });
+
+    [nameInput, emailInput, passwordInput].forEach((input) => {
+        input.addEventListener("input", () => {
+            let errorMessage = "";
+            if (input === nameInput) errorMessage = validateName(input.value);
+            if (input === emailInput) errorMessage = validateEmail(input.value);
+            if (input === passwordInput) errorMessage = validatePassword(input.value);
+
+            showError(input, errorMessage);
+        });
+    });
+
 </script>
 </html>

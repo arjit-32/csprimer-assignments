@@ -66,6 +66,7 @@
 
 
     function showError(inputElement, message) {
+        // console.log(inputElement);
         const errorElement = inputElement.nextElementSibling; // the <small> tag
         errorElement.textContent = message;
         if (message) {

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Search</title>
+  <style>
+    #loading, #error { 
+      display: none; 
+      margin-top: 10px; 
+    }
+    #loading { 
+      color: blue; 
+    }
+    #error { 
+      color: darkred; 
+    }
+    .student { 
+      margin: 5px 0; 
+    }
+
+  </style>
+</head>
+<body>
+  <h2>Student List</h2>
+  <button id="loadStudents">Load Students</button>
+  <button id="clearStudents">Clear List</button>
+
+  <ul id="studentList"></ul>
+
+  <p id="loading">Loading...</p>
+  <p id="error">Something went wrong!</p>
+
+  <script>
+    const loadBtn = document.getElementById('loadStudents');
+    const clearBtn = document.getElementById('clearStudents');
+    const studentList = document.getElementById('studentList');
+    const loading = document.getElementById('loading');
+    const error = document.getElementById('error');
+
+    const studentsData = [
+      "Alice Johnson", "Bob Smith", "Charlie Brown",
+      "Diana Prince", "Ethan Hunt"
+    ];
+
+    function renderList(data) {
+      studentList.innerHTML = '';
+      data.forEach(name => {
+        const li = document.createElement('li');
+        li.textContent = name;
+        li.className = 'student';
+        studentList.appendChild(li);
+      });
+    }
+
+
+    loadBtn.addEventListener('click', () => {
+      loading.style.display = 'block';
+      error.style.display = 'none';
+      loadBtn.disabled = true;
+      clearBtn.disabled = true;
+
+      setTimeout(() => {
+        try {
+          // Simulate random failure
+          if (Math.random() < 0.3) throw new Error("Simulated failure");
+
+          renderList(studentsData);
+        } catch (err) {
+          error.style.display = 'block';
+        } finally {
+          loading.style.display = 'none';
+          loadBtn.disabled = false;
+          clearBtn.disabled = false;
+        }
+      }, 1500); // simulate delay
+    });
+
+
+    clearBtn.addEventListener('click', () => {
+      renderList([]);
+    });
+
+
+  </script>
+</body>
+</html>

@@ -2,8 +2,6 @@
 
 ---
 
-# 🟢 PHASE 1 - DOM Fundamentals
-
 ## Assignment 1: DOM Selection & Basic Manipulation
 🎯 Learn how to read and modify the DOM.
 
@@ -44,8 +42,6 @@ Tasks:
 
 ---
 
-# 🟡 PHASE 2 - State + UI Sync
-
 ## Assignment 4: Student Manager (Add + Render)
 🎯 Connect JavaScript state to DOM.
 
@@ -82,8 +78,6 @@ Tasks:
 
 ---
 
-# 🟠 PHASE 3 - Forms and Storage
-
 ## Assignment 7: Form Validation
 🎯 Build real-world form handling.
 
@@ -98,19 +92,22 @@ Tasks:
 
 ---
 
-## Assignment 8: localStorage Integration
+## Assignment 8: Browser Storage Integration
 🎯 Persist data.
 
 Tasks:
-1. Save students to localStorage.
-2. Load on page refresh.
-3. Add Clear All button.
-4. Add theme toggle (dark/light).
-5. Persist theme in localStorage.
+1. localStorage 
+   - Store the registered user’s name permanently.
+   - Load it back on page refresh.
+2. sessionStorage
+   - Store the user's email temporarily for the current session.
+   - Autofill email if page reloads during same session
+3. Cookies
+   - Save the user's preferred language in a cookie with a 7‑day expiry.
+4. Reset All button
+   
 
 ---
-
-# 🟣 PHASE 4 - Filtering, Sorting & UX
 
 ## Assignment 9: Search & Filter
 🎯 Live filtering UI.
@@ -128,9 +125,8 @@ Tasks:
 
 Tasks:
 1. Add A → Z button.
-2. Add Z → A button.
-3. Sort array.
-4. Re-render UI.
+2. Convert Nodelist to array and sort.
+3. Re-render UI.
 
 ---
 
@@ -145,9 +141,6 @@ Tasks:
 
 ---
 
-# 🔵 PHASE 5 - Fetch & API Integration
-
-
 ## Assignment 12: Fetch API + Rendering
 🎯 Connect external data to DOM.
 
@@ -160,47 +153,6 @@ Tasks:
    - city
 3. Show loader while fetching.
 4. Show error if request fails.
-5. Add retry button.
-
----
-
-## Assignment 13: Async Interaction UI
-🎯 Handle async UI updates.
-
-Tasks:
-1. Add “Refresh Data” button.
-2. Disable button while loading.
-3. Cancel previous request (basic logic).
-4. Handle slow network simulation.
-
----
-
-# 🟤 PHASE 6 - Small UI Components
-
-## Assignment 14: Modal Component
-🎯 Build reusable UI.
-
-Tasks:
-1. Create modal using hidden div.
-2. Open on button click.
-3. Close on:
-   - close button
-   - backdrop click
-   - Escape key
-4. Add fade animation.
-5. Prevent background scroll when open.
-
----
-
-## Assignment 15: Tabs & Accordion
-🎯 Build interactive components.
-
-Tasks:
-1. Create tab system.
-2. Switch content on click.
-3. Create accordion:
-   - open one
-   - close others
-4. Add smooth transition.
+5. Add pagination (prev+next) button
 
 ---
